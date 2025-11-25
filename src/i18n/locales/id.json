@@ -1,0 +1,54 @@
+{
+  "header": {
+    "home": "Beranda",
+    "products": "Produk",
+    "services": "Layanan",
+    "testimonials": "Testimoni",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "title": "Mesin Es Premium oleh Escool",
+    "subtitle": "Mesin es kelas profesional untuk kebutuhan bisnis Anda",
+    "description": "Rasakan perpaduan sempurna antara kualitas, efisiensi, dan keandalan dengan mesin es Escool.",
+    "buyTikTok": "Beli di TikTok Shop",
+    "buyShopee": "Beli di Shopee"
+  },
+  "products": {
+    "title": "Produk Kami",
+    "subtitle": "Temukan rangkaian mesin es berkualitas tinggi kami",
+    "description": "Dari unit kompak untuk bisnis kecil hingga mesin kelas industri, kami memiliki solusi sempurna untuk kebutuhan produksi es Anda."
+  },
+  "services": {
+    "title": "Layanan Kami",
+    "subtitle": "Dukungan komprehensif untuk bisnis Anda",
+    "installation": {
+      "title": "Instalasi Profesional",
+      "description": "Layanan instalasi ahli untuk memastikan kinerja optimal"
+    },
+    "maintenance": {
+      "title": "Pemeliharaan & Dukungan",
+      "description": "Pemeliharaan rutin dan dukungan pelanggan 24/7"
+    },
+    "customization": {
+      "title": "Solusi Kustom",
+      "description": "Solusi mesin es yang disesuaikan dengan kebutuhan spesifik Anda"
+    }
+  },
+  "testimonials": {
+    "title": "Apa Kata Pelanggan Kami",
+    "subtitle": "Dipercaya oleh bisnis di seluruh dunia"
+  },
+  "consultation": {
+    "title": "Konsultasi Kustom",
+    "subtitle": "Butuh solusi kustom?",
+    "description": "Hubungi kami melalui WhatsApp untuk konsultasi yang dipersonalisasi",
+    "button": "Hubungi di WhatsApp"
+  },
+  "footer": {
+    "location": "Lokasi Kami",
+    "followUs": "Ikuti Kami",
+    "quickLinks": "Tautan Cepat",
+    "copyright": "© 2024 Escool. Hak cipta dilindungi."
+  }
+}
+

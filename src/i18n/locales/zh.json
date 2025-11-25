@@ -1,0 +1,54 @@
+{
+  "header": {
+    "home": "首页",
+    "products": "产品",
+    "services": "服务",
+    "testimonials": "客户评价",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "title": "Escool 优质制冰机",
+    "subtitle": "满足您业务需求的专业级制冰机",
+    "description": "体验 Escool 制冰机在质量、效率和可靠性方面的完美结合。",
+    "buyTikTok": "在 TikTok Shop 购买",
+    "buyShopee": "在 Shopee 购买"
+  },
+  "products": {
+    "title": "我们的产品",
+    "subtitle": "探索我们的高品质制冰机系列",
+    "description": "从适合小型企业的紧凑型设备到工业级机器，我们为您的制冰需求提供完美的解决方案。"
+  },
+  "services": {
+    "title": "我们的服务",
+    "subtitle": "为您的业务提供全面支持",
+    "installation": {
+      "title": "专业安装",
+      "description": "专业安装服务，确保最佳性能"
+    },
+    "maintenance": {
+      "title": "维护与支持",
+      "description": "定期维护和 24/7 客户支持"
+    },
+    "customization": {
+      "title": "定制解决方案",
+      "description": "根据您的特定需求定制制冰机解决方案"
+    }
+  },
+  "testimonials": {
+    "title": "客户评价",
+    "subtitle": "受到全球企业的信赖"
+  },
+  "consultation": {
+    "title": "定制咨询",
+    "subtitle": "需要定制解决方案？",
+    "description": "通过 WhatsApp 联系我们进行个性化咨询",
+    "button": "在 WhatsApp 上联系"
+  },
+  "footer": {
+    "location": "我们的位置",
+    "followUs": "关注我们",
+    "quickLinks": "快速链接",
+    "copyright": "© 2024 Escool. 保留所有权利。"
+  }
+}
+

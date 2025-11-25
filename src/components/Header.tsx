@@ -1,119 +1,192 @@
-'use client';
+import { useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Menu, X, Globe } from 'lucide-react'
 
-import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
-import LanguageSwitcher from './LanguageSwitcher';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-export default function Header() {
-  const t = useTranslations('Nav');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const Header = () => {
+  const { t, i18n } = useTranslation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { key: 'home', href: '#hero' },
-    { key: 'products', href: '#products' },
-    { key: 'services', href: '#services' },
-    { key: 'reviews', href: '#reviews' },
-    { key: 'contact', href: '#contact' },
-  ];
-
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 80; // 80px header height
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-      setMobileMenuOpen(false);
+      setIsScrolled(window.scrollY > 20)
     }
-  };
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang)
+    setIsMenuOpen(false)
+  }
+
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+      setIsMenuOpen(false)
+    }
+  }
+
+  const languages = [
+    { code: 'en', name: 'English' },
+    { code: 'zh', name: '中文' },
+    { code: 'id', name: 'Bahasa' },
+  ]
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm dark:bg-black/90' : 'bg-white/50 backdrop-blur-sm'
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-md'
+          : 'bg-white/80 backdrop-blur-sm'
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-3xl font-bold tracking-tighter text-blue-600">
-              escool
-            </Link>
+          <div className="flex items-center">
+            <button
+              onClick={() => scrollToSection('hero')}
+              className="text-2xl font-bold text-gray-900 hover:text-blue-600 transition-colors"
+            >
+              Escool
+            </button>
           </div>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.key}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-200 dark:hover:text-blue-400 transition-colors"
-              >
-                {t(link.key)}
-              </a>
-            ))}
-          </nav>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            <button
+              onClick={() => scrollToSection('hero')}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              {t('header.home')}
+            </button>
+            <button
+              onClick={() => scrollToSection('products')}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              {t('header.products')}
+            </button>
+            <button
+              onClick={() => scrollToSection('services')}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              {t('header.services')}
+            </button>
+            <button
+              onClick={() => scrollToSection('testimonials')}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              {t('header.testimonials')}
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              {t('header.contact')}
+            </button>
 
-          {/* Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <LanguageSwitcher />
+            {/* Language Selector */}
+            <div className="relative group">
+              <button className="flex items-center gap-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                <Globe className="w-5 h-5" />
+                <span className="uppercase">{i18n.language}</span>
+              </button>
+              <div className="absolute right-0 top-full mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => changeLanguage(lang.code)}
+                    className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 first:rounded-t-lg last:rounded-b-lg transition-colors ${
+                      i18n.language === lang.code
+                        ? 'bg-blue-50 text-blue-600 font-medium'
+                        : 'text-gray-700'
+                    }`}
+                  >
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <LanguageSwitcher />
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="ml-4 p-2 text-gray-700 dark:text-gray-200 focus:outline-none rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-black border-t dark:border-gray-800 overflow-hidden"
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden text-gray-700 hover:text-blue-600 transition-colors"
+            aria-label="Toggle menu"
           >
-            <div className="px-4 pt-2 pb-4 space-y-1">
-              {navLinks.map((link) => (
-                <a
-                  key={link.key}
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
-                  className="block px-3 py-3 text-base font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md"
-                >
-                  {t(link.key)}
-                </a>
-              ))}
+            {isMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden py-4 border-t border-gray-200">
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => scrollToSection('hero')}
+                className="text-left text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                {t('header.home')}
+              </button>
+              <button
+                onClick={() => scrollToSection('products')}
+                className="text-left text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                {t('header.products')}
+              </button>
+              <button
+                onClick={() => scrollToSection('services')}
+                className="text-left text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                {t('header.services')}
+              </button>
+              <button
+                onClick={() => scrollToSection('testimonials')}
+                className="text-left text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                {t('header.testimonials')}
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="text-left text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                {t('header.contact')}
+              </button>
+              <div className="pt-4 border-t border-gray-200">
+                <div className="flex items-center gap-2 mb-2">
+                  <Globe className="w-5 h-5 text-gray-700" />
+                  <span className="text-sm font-medium text-gray-700">Language</span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => changeLanguage(lang.code)}
+                      className={`text-left px-4 py-2 text-sm rounded-lg transition-colors ${
+                        i18n.language === lang.code
+                          ? 'bg-blue-50 text-blue-600 font-medium'
+                          : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      {lang.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      </nav>
     </header>
-  );
+  )
 }
+
+export default Header
 

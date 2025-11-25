@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Escool Website
+
+A modern, responsive website for Escool ice machine brand built with React, Vite, and TypeScript.
+
+## Features
+
+- 🌍 Multi-language support (English, Chinese, Indonesian) with automatic language detection
+- 📱 Fully responsive design for mobile and desktop
+- 🎨 Modern, beautiful UI with Tailwind CSS
+- ⚡ Fast performance with Vite
+- 🔍 SEO optimized with multi-language meta tags
+- ☁️ Ready for Cloudflare Pages deployment
+
+## Tech Stack
+
+- React 18
+- Vite
+- TypeScript
+- Tailwind CSS
+- i18next for internationalization
+- Lucide React for icons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- pnpm
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Start development server
 pnpm dev
-# or
-bun dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── components/       # React components
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── Products.tsx
+│   ├── Services.tsx
+│   ├── Testimonials.tsx
+│   ├── Consultation.tsx
+│   ├── Footer.tsx
+│   └── SEO.tsx
+├── i18n/            # Internationalization
+│   ├── config.ts
+│   └── locales/
+│       ├── en.json
+│       ├── zh.json
+│       └── id.json
+├── App.tsx          # Main app component
+├── main.tsx         # Entry point
+└── index.css        # Global styles
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Configuration
 
-## Learn More
+### WhatsApp Number
 
-To learn more about Next.js, take a look at the following resources:
+Update the WhatsApp number in `src/components/Consultation.tsx`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```typescript
+const whatsappNumber = '1234567890' // Replace with your actual number
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Social Media Links
 
-## Deploy on Vercel
+Update social media links in `src/components/Footer.tsx` and `src/components/Hero.tsx`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- TikTok Shop link
+- Shopee link
+- Facebook, Instagram, Twitter links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Company Address
+
+Update the company address in `src/components/Footer.tsx`.
+
+## Deployment to Cloudflare Pages
+
+1. Push your code to a Git repository (GitHub, GitLab, etc.)
+
+2. In Cloudflare Dashboard:
+   - Go to Pages
+   - Create a new project
+   - Connect your repository
+   - Build settings:
+     - Build command: `pnpm build`
+     - Build output directory: `dist`
+     - Root directory: `/`
+
+3. The `_headers` and `_redirects` files will be automatically used by Cloudflare Pages.
+
+Alternatively, you can use Wrangler CLI:
+
+```bash
+# Install Wrangler
+pnpm add -D wrangler
+
+# Deploy
+pnpm wrangler pages deploy dist
+```
+
+## SEO
+
+The website includes:
+- Multi-language meta tags
+- Open Graph tags
+- Twitter Card tags
+- Alternate language links (hreflang)
+- Semantic HTML structure
+
+## License
+
+© 2024 Escool. All rights reserved.

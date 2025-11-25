@@ -1,0 +1,54 @@
+{
+  "header": {
+    "home": "Home",
+    "products": "Products",
+    "services": "Services",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Premium Ice Machines by Escool",
+    "subtitle": "Professional-grade ice machines for your business needs",
+    "description": "Experience the perfect blend of quality, efficiency, and reliability with Escool ice machines.",
+    "buyTikTok": "Buy on TikTok Shop",
+    "buyShopee": "Buy on Shopee"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Discover our range of high-quality ice machines",
+    "description": "From compact units for small businesses to industrial-grade machines, we have the perfect solution for your ice production needs."
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive support for your business",
+    "installation": {
+      "title": "Professional Installation",
+      "description": "Expert installation services to ensure optimal performance"
+    },
+    "maintenance": {
+      "title": "Maintenance & Support",
+      "description": "Regular maintenance and 24/7 customer support"
+    },
+    "customization": {
+      "title": "Custom Solutions",
+      "description": "Tailored ice machine solutions for your specific needs"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Customers Say",
+    "subtitle": "Trusted by businesses worldwide"
+  },
+  "consultation": {
+    "title": "Custom Consultation",
+    "subtitle": "Need a custom solution?",
+    "description": "Contact us via WhatsApp for personalized consultation",
+    "button": "Contact on WhatsApp"
+  },
+  "footer": {
+    "location": "Our Location",
+    "followUs": "Follow Us",
+    "quickLinks": "Quick Links",
+    "copyright": "© 2024 Escool. All rights reserved."
+  }
+}
+
