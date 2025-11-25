@@ -14,14 +14,15 @@ function App() {
 
   useEffect(() => {
     // Update HTML lang attribute when language changes
-    document.documentElement.lang = i18n.language
+    const currentLang = i18n.language || 'en'
+    document.documentElement.lang = currentLang
   }, [i18n.language])
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden w-full">
       <SEO />
       <Header />
-      <main>
+      <main className="overflow-x-hidden w-full">
         <Hero />
         <Products />
         <Services />

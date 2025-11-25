@@ -11,12 +11,68 @@
     "subtitle": "Professional-grade ice machines for your business needs",
     "description": "Experience the perfect blend of quality, efficiency, and reliability with Escool ice machines.",
     "buyTikTok": "Buy on TikTok Shop",
-    "buyShopee": "Buy on Shopee"
+    "buyShopee": "Buy on Shopee",
+    "advantages": [
+      "24/7 Continuous Ice Production",
+      "Energy Efficient & Eco-Friendly",
+      "Smart Control System",
+      "Professional After-Sales Service"
+    ]
   },
   "products": {
     "title": "Our Products",
     "subtitle": "Discover our range of high-quality ice machines",
-    "description": "From compact units for small businesses to industrial-grade machines, we have the perfect solution for your ice production needs."
+    "description": "Choose the perfect ice machine for your needs",
+    "applicationScenarios": "Application Scenarios",
+    "hotProducts": "Hot Products",
+    "simpleLabels": ["Few People", "Many People", "Small Shop", "Large Shop"],
+    "items": [
+      {
+        "name": "Small Home Ice Machine",
+        "capacity": "15kg per 24 hours",
+        "description": "Perfect for regular households"
+      },
+      {
+        "name": "Medium Home Ice Machine",
+        "capacity": "24kg per 24 hours",
+        "description": "Ideal for premium households and office buildings"
+      },
+      {
+        "name": "Small Commercial Ice Machine",
+        "capacity": "60-160kg per 24 hours (selectable)",
+        "description": "Suitable for shops with 30-80㎡ area"
+      },
+      {
+        "name": "Large Commercial Ice Machine",
+        "capacity": "200-500kg per 24 hours (selectable)",
+        "description": "Perfect for shops and markets over 100㎡"
+      }
+    ],
+    "detailedInfo": {
+      "small-home": {
+        "capacity": "15kg/day",
+        "description": "Perfect for regular households"
+      },
+      "medium-home": {
+        "capacity": "24kg/day",
+        "description": "Ideal for premium households and office buildings"
+      },
+      "small-commercial": {
+        "capacity": "60-160kg/day",
+        "description": "Suitable for shops with 30-80㎡ area"
+      },
+      "large-commercial": {
+        "capacity": "200-500kg/day",
+        "description": "Perfect for shops and markets over 100㎡"
+      }
+    },
+    "filterAll": "All",
+    "buyButton": "Buy Now",
+    "featuredLabels": {
+      "hot": "Hot Seller",
+      "commercial": "Commercial Recommended",
+      "highCapacity": "High Capacity"
+    }
   },
   "services": {
     "title": "Our Services",
@@ -36,7 +92,33 @@
   },
   "testimonials": {
     "title": "What Our Customers Say",
-    "subtitle": "Trusted by businesses worldwide"
+    "subtitle": "Trusted by businesses worldwide",
+    "items": [
+      {
+        "name": "Joko",
+        "role": "Minimart Owner",
+        "content": "Escool ice machines have been a game-changer for our restaurant. The quality and reliability are outstanding!",
+        "rating": 5,
+        "date": "January 2024",
+        "business": "Joko Minimart"
+      },
+      {
+        "name": "Maria Garcia",
+        "role": "Bar Manager",
+        "content": "We've been using Escool machines for over 2 years. Excellent performance and great customer support.",
+        "rating": 5,
+        "date": "December 2023",
+        "business": "Garcia Bar & Restaurant"
+      },
+      {
+        "name": "David Chen",
+        "role": "Hotel Director",
+        "content": "The industrial ice system from Escool handles our high demand perfectly. Highly recommended!",
+        "rating": 5,
+        "date": "February 2024",
+        "business": "Grand Hotel Jakarta"
+      }
+    ]
   },
   "consultation": {
     "title": "Custom Consultation",

@@ -83,7 +83,7 @@ const Footer = () => {
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
                 aria-label="TikTok"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -94,7 +94,7 @@ const Footer = () => {
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
@@ -112,7 +112,7 @@ const Footer = () => {
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-400 transition-colors"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />

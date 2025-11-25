@@ -11,12 +11,68 @@
     "subtitle": "满足您业务需求的专业级制冰机",
     "description": "体验 Escool 制冰机在质量、效率和可靠性方面的完美结合。",
     "buyTikTok": "在 TikTok Shop 购买",
-    "buyShopee": "在 Shopee 购买"
+    "buyShopee": "在 Shopee 购买",
+    "advantages": [
+      "24小时不间断制冰",
+      "高效节能环保",
+      "智能控制系统",
+      "专业售后服务"
+    ]
   },
   "products": {
     "title": "我们的产品",
     "subtitle": "探索我们的高品质制冰机系列",
-    "description": "从适合小型企业的紧凑型设备到工业级机器，我们为您的制冰需求提供完美的解决方案。"
+    "description": "选择适合您需求的完美制冰机",
+    "applicationScenarios": "应用场景",
+    "hotProducts": "热销产品",
+    "simpleLabels": ["少人", "多人", "小商铺", "大商铺"],
+    "items": [
+      {
+        "name": "小型家用机",
+        "capacity": "24小时产冰15kg",
+        "description": "适合普通家庭"
+      },
+      {
+        "name": "中型家用机",
+        "capacity": "24小时产冰24kg",
+        "description": "适合高端家庭及写字楼办公室"
+      },
+      {
+        "name": "小型商用机",
+        "capacity": "24小时产冰60-160kg可选择",
+        "description": "适合30-80㎡的商铺"
+      },
+      {
+        "name": "大型商用机",
+        "capacity": "24小时产冰200-500kg可选择",
+        "description": "适合100㎡以上的商铺卖场"
+      }
+    ],
+    "detailedInfo": {
+      "small-home": {
+        "capacity": "15kg/天",
+        "description": "适合普通家庭使用"
+      },
+      "medium-home": {
+        "capacity": "24kg/天",
+        "description": "适合高端家庭及写字楼办公室"
+      },
+      "small-commercial": {
+        "capacity": "60-160kg/天",
+        "description": "适合30-80㎡的商铺"
+      },
+      "large-commercial": {
+        "capacity": "200-500kg/天",
+        "description": "适合100㎡以上的商铺卖场"
+      }
+    },
+    "filterAll": "全部",
+    "buyButton": "立即购买",
+    "featuredLabels": {
+      "hot": "热销型号",
+      "commercial": "商用推荐",
+      "highCapacity": "大产能"
+    }
   },
   "services": {
     "title": "我们的服务",
@@ -36,7 +92,33 @@
   },
   "testimonials": {
     "title": "客户评价",
-    "subtitle": "受到全球企业的信赖"
+    "subtitle": "受到全球企业的信赖",
+    "items": [
+      {
+        "name": "Joko",
+        "role": "小超市老板",
+        "content": "Escool 制冰机彻底改变了我们餐厅的运营。质量和可靠性都非常出色！",
+        "rating": 5,
+        "date": "2024年1月",
+        "business": "Joko Minimart"
+      },
+      {
+        "name": "Maria Garcia",
+        "role": "酒吧经理",
+        "content": "我们使用 Escool 机器已经超过 2 年了。性能卓越，客户支持也很棒。",
+        "rating": 5,
+        "date": "2023年12月",
+        "business": "Garcia Bar & Restaurant"
+      },
+      {
+        "name": "David Chen",
+        "role": "酒店总监",
+        "content": "Escool 的工业制冰系统完美满足了我们高需求。强烈推荐！",
+        "rating": 5,
+        "date": "2024年2月",
+        "business": "Grand Hotel Jakarta"
+      }
+    ]
   },
   "consultation": {
     "title": "定制咨询",

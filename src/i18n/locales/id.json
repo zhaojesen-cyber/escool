@@ -11,12 +11,68 @@
     "subtitle": "Mesin es kelas profesional untuk kebutuhan bisnis Anda",
     "description": "Rasakan perpaduan sempurna antara kualitas, efisiensi, dan keandalan dengan mesin es Escool.",
     "buyTikTok": "Beli di TikTok Shop",
-    "buyShopee": "Beli di Shopee"
+    "buyShopee": "Beli di Shopee",
+    "advantages": [
+      "Produksi Es 24 Jam Non-Stop",
+      "Efisien Energi & Ramah Lingkungan",
+      "Sistem Kontrol Pintar",
+      "Layanan Purna Jual Profesional"
+    ]
   },
   "products": {
     "title": "Produk Kami",
     "subtitle": "Temukan rangkaian mesin es berkualitas tinggi kami",
-    "description": "Dari unit kompak untuk bisnis kecil hingga mesin kelas industri, kami memiliki solusi sempurna untuk kebutuhan produksi es Anda."
+    "description": "Pilih mesin es yang sempurna untuk kebutuhan Anda",
+    "applicationScenarios": "Skenario Aplikasi",
+    "hotProducts": "Produk Populer",
+    "simpleLabels": ["Sedikit Orang", "Banyak Orang", "Toko Kecil", "Toko Besar"],
+    "items": [
+      {
+        "name": "Mesin Es Rumah Kecil",
+        "capacity": "15kg per 24 jam",
+        "description": "Cocok untuk rumah tangga biasa"
+      },
+      {
+        "name": "Mesin Es Rumah Menengah",
+        "capacity": "24kg per 24 jam",
+        "description": "Ideal untuk rumah tangga premium dan gedung perkantoran"
+      },
+      {
+        "name": "Mesin Es Komersial Kecil",
+        "capacity": "60-160kg per 24 jam (dapat dipilih)",
+        "description": "Cocok untuk toko dengan area 30-80㎡"
+      },
+      {
+        "name": "Mesin Es Komersial Besar",
+        "capacity": "200-500kg per 24 jam (dapat dipilih)",
+        "description": "Sempurna untuk toko dan pasar di atas 100㎡"
+      }
+    ],
+    "detailedInfo": {
+      "small-home": {
+        "capacity": "15kg/hari",
+        "description": "Cocok untuk rumah tangga biasa"
+      },
+      "medium-home": {
+        "capacity": "24kg/hari",
+        "description": "Ideal untuk rumah tangga premium dan gedung perkantoran"
+      },
+      "small-commercial": {
+        "capacity": "60-160kg/hari",
+        "description": "Cocok untuk toko dengan area 30-80㎡"
+      },
+      "large-commercial": {
+        "capacity": "200-500kg/hari",
+        "description": "Sempurna untuk toko dan pasar di atas 100㎡"
+      }
+    },
+    "filterAll": "Semua",
+    "buyButton": "Beli Sekarang",
+    "featuredLabels": {
+      "hot": "Terlaris",
+      "commercial": "Rekomendasi Komersial",
+      "highCapacity": "Kapasitas Besar"
+    }
   },
   "services": {
     "title": "Layanan Kami",
@@ -36,7 +92,33 @@
   },
   "testimonials": {
     "title": "Apa Kata Pelanggan Kami",
-    "subtitle": "Dipercaya oleh bisnis di seluruh dunia"
+    "subtitle": "Dipercaya oleh bisnis di seluruh dunia",
+    "items": [
+      {
+        "name": "Joko",
+        "role": "Pemilik Minimart",
+        "content": "Mesin es Escool telah mengubah permainan untuk restoran kami. Kualitas dan keandalannya luar biasa!",
+        "rating": 5,
+        "date": "Januari 2024",
+        "business": "Joko Minimart"
+      },
+      {
+        "name": "Maria Garcia",
+        "role": "Manajer Bar",
+        "content": "Kami telah menggunakan mesin Escool selama lebih dari 2 tahun. Kinerja yang sangat baik dan dukungan pelanggan yang hebat.",
+        "rating": 5,
+        "date": "Desember 2023",
+        "business": "Garcia Bar & Restaurant"
+      },
+      {
+        "name": "David Chen",
+        "role": "Direktur Hotel",
+        "content": "Sistem es industri dari Escool menangani permintaan tinggi kami dengan sempurna. Sangat direkomendasikan!",
+        "rating": 5,
+        "date": "Februari 2024",
+        "business": "Grand Hotel Jakarta"
+      }
+    ]
   },
   "consultation": {
     "title": "Konsultasi Kustom",

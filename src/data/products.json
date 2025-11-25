@@ -1,0 +1,76 @@
+[
+  {
+    "id": "1",
+    "code": "ESC-15A",
+    "power": "150W",
+    "type": "small-home",
+    "image": "/logo.png",
+    "shopeeUrl": "https://shopee.co.id/soocool.mall",
+    "tiktokUrl": "https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/",
+    "featured": false
+  },
+  {
+    "id": "2",
+    "code": "ESC-15B",
+    "power": "150W",
+    "type": "small-home",
+    "image": "/logo.png",
+    "shopeeUrl": "https://shopee.co.id/soocool.mall",
+    "tiktokUrl": "https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/",
+    "featured": true,
+    "featuredLabel": "热销型号"
+  },
+  {
+    "id": "3",
+    "code": "ESC-24A",
+    "power": "200W",
+    "type": "medium-home",
+    "image": "/logo.png",
+    "shopeeUrl": "https://shopee.co.id/soocool.mall",
+    "tiktokUrl": "https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/",
+    "featured": false
+  },
+  {
+    "id": "4",
+    "code": "ESC-60A",
+    "power": "500W",
+    "type": "small-commercial",
+    "image": "/logo.png",
+    "shopeeUrl": "https://shopee.co.id/soocool.mall",
+    "tiktokUrl": "https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/",
+    "featured": true,
+    "featuredLabel": "commercial"
+  },
+  {
+    "id": "5",
+    "code": "ESC-100A",
+    "power": "800W",
+    "type": "small-commercial",
+    "image": "/logo.png",
+    "shopeeUrl": "https://shopee.co.id/soocool.mall",
+    "tiktokUrl": "https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/",
+    "featured": false
+  },
+  {
+    "id": "6",
+    "code": "ESC-200A",
+    "power": "1200W",
+    "type": "large-commercial",
+    "image": "/logo.png",
+    "shopeeUrl": "https://shopee.co.id/soocool.mall",
+    "tiktokUrl": "https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/",
+    "featured": true,
+    "featuredLabel": "highCapacity"
+  },
+  {
+    "id": "7",
+    "code": "ESC-300A",
+    "power": "1500W",
+    "type": "large-commercial",
+    "image": "/logo.png",
+    "shopeeUrl": "https://shopee.co.id/soocool.mall",
+    "tiktokUrl": "https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/",
+    "featured": false
+  }
+]
+
