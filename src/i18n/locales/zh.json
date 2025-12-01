@@ -7,9 +7,9 @@
     "contact": "联系我们"
   },
   "hero": {
-    "title": "Escool 优质制冰机",
+    "title": "Soocool 优质制冰机",
     "subtitle": "满足您业务需求的专业级制冰机",
-    "description": "体验 Escool 制冰机在质量、效率和可靠性方面的完美结合。",
+    "description": "体验 Soocool 制冰机在质量、效率和可靠性方面的完美结合。",
     "buyTikTok": "在 TikTok Shop 购买",
     "buyShopee": "在 Shopee 购买",
     "advantages": [
@@ -68,11 +68,20 @@
     },
     "filterAll": "全部",
     "buyButton": "立即购买",
+    "power": "功率",
+    "capacity": "制冰量",
+    "storage": "储冰量",
     "featuredLabels": {
       "hot": "热销型号",
       "commercial": "商用推荐",
       "highCapacity": "大产能"
     }
+  },
+  "factory": {
+    "title": "自有工厂",
+    "subtitle": "我们拥有自主生产基地，从研发到生产全程把控，确保每一台制冰机都符合高标准的质量要求。工厂配备先进的生产设备和严格的质量检测体系，为您提供可靠的产品保障。",
+    "imageAlt": "工厂",
+    "imageLabel": "工厂图片"
   },
   "services": {
     "title": "我们的服务",
@@ -97,7 +106,7 @@
       {
         "name": "Joko",
         "role": "小超市老板",
-        "content": "Escool 制冰机彻底改变了我们餐厅的运营。质量和可靠性都非常出色！",
+        "content": "Soocool 制冰机彻底改变了我们餐厅的运营。质量和可靠性都非常出色！",
         "rating": 5,
         "date": "2024年1月",
         "business": "Joko Minimart"
@@ -105,7 +114,7 @@
       {
         "name": "Maria Garcia",
         "role": "酒吧经理",
-        "content": "我们使用 Escool 机器已经超过 2 年了。性能卓越，客户支持也很棒。",
+        "content": "我们使用 Soocool 机器已经超过 2 年了。性能卓越，客户支持也很棒。",
         "rating": 5,
         "date": "2023年12月",
         "business": "Garcia Bar & Restaurant"
@@ -113,7 +122,7 @@
       {
         "name": "David Chen",
         "role": "酒店总监",
-        "content": "Escool 的工业制冰系统完美满足了我们高需求。强烈推荐！",
+        "content": "Soocool 的工业制冰系统完美满足了我们高需求。强烈推荐！",
         "rating": 5,
         "date": "2024年2月",
         "business": "Grand Hotel Jakarta"
@@ -130,7 +139,8 @@
     "location": "我们的位置",
     "followUs": "关注我们",
     "quickLinks": "快速链接",
-    "copyright": "© 2024 Escool. 保留所有权利。"
+    "description": "满足您业务需求的优质制冰机。质量、效率和可靠性。",
+    "copyright": "© 2024 Soocool. 保留所有权利。"
   }
 }
 

@@ -1,6 +1,6 @@
-# Escool Website
+# Soocool Website
 
-A modern, responsive website for Escool ice machine brand built with React, Vite, and TypeScript.
+A modern, responsive website for Soocool ice machine brand built with React, Vite, and TypeScript.
 
 ## Features
 
@@ -125,4 +125,4 @@ The website includes:
 
 ## License
 
-© 2024 Escool. All rights reserved.
+© 2024 Soocool. All rights reserved.

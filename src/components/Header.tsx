@@ -51,9 +51,9 @@ const Header = () => {
               className="flex items-center"
             >
               <img 
-                src="/logo.png" 
-                alt="Escool Logo" 
-                className="h-14 lg:h-20 w-auto"
+                src="/newlogo.png" 
+                alt="Soocool Logo" 
+                className="h-12 lg:h-14 w-auto"
               />
             </button>
           </div>

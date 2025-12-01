@@ -7,9 +7,9 @@
     "contact": "Contact"
   },
   "hero": {
-    "title": "Premium Ice Machines by Escool",
+    "title": "Premium Ice Machines by Soocool",
     "subtitle": "Professional-grade ice machines for your business needs",
-    "description": "Experience the perfect blend of quality, efficiency, and reliability with Escool ice machines.",
+    "description": "Experience the perfect blend of quality, efficiency, and reliability with Soocool ice machines.",
     "buyTikTok": "Buy on TikTok Shop",
     "buyShopee": "Buy on Shopee",
     "advantages": [
@@ -68,11 +68,20 @@
     },
     "filterAll": "All",
     "buyButton": "Buy Now",
+    "power": "Power",
+    "capacity": "Ice Production",
+    "storage": "Ice Storage",
     "featuredLabels": {
       "hot": "Hot Seller",
       "commercial": "Commercial Recommended",
       "highCapacity": "High Capacity"
     }
+  },
+  "factory": {
+    "title": "Own Factory",
+    "subtitle": "We own our production facility, controlling the entire process from R&D to manufacturing, ensuring every ice machine meets high-quality standards. Our factory is equipped with advanced production equipment and a strict quality inspection system, providing you with reliable product assurance.",
+    "imageAlt": "Factory",
+    "imageLabel": "Factory Image"
   },
   "services": {
     "title": "Our Services",
@@ -97,7 +106,7 @@
       {
         "name": "Joko",
         "role": "Minimart Owner",
-        "content": "Escool ice machines have been a game-changer for our restaurant. The quality and reliability are outstanding!",
+        "content": "Soocool ice machines have been a game-changer for our restaurant. The quality and reliability are outstanding!",
         "rating": 5,
         "date": "January 2024",
         "business": "Joko Minimart"
@@ -105,7 +114,7 @@
       {
         "name": "Maria Garcia",
         "role": "Bar Manager",
-        "content": "We've been using Escool machines for over 2 years. Excellent performance and great customer support.",
+        "content": "We've been using Soocool machines for over 2 years. Excellent performance and great customer support.",
         "rating": 5,
         "date": "December 2023",
         "business": "Garcia Bar & Restaurant"
@@ -113,7 +122,7 @@
       {
         "name": "David Chen",
         "role": "Hotel Director",
-        "content": "The industrial ice system from Escool handles our high demand perfectly. Highly recommended!",
+        "content": "The industrial ice system from Soocool handles our high demand perfectly. Highly recommended!",
         "rating": 5,
         "date": "February 2024",
         "business": "Grand Hotel Jakarta"
@@ -130,7 +139,8 @@
     "location": "Our Location",
     "followUs": "Follow Us",
     "quickLinks": "Quick Links",
-    "copyright": "© 2024 Escool. All rights reserved."
+    "description": "Premium ice machines for your business needs. Quality, efficiency, and reliability.",
+    "copyright": "© 2024 Soocool. All rights reserved."
   }
 }
 

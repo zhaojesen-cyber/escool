@@ -7,9 +7,9 @@
     "contact": "Kontak"
   },
   "hero": {
-    "title": "Mesin Es Premium oleh Escool",
+    "title": "Mesin Es Premium oleh Soocool",
     "subtitle": "Mesin es kelas profesional untuk kebutuhan bisnis Anda",
-    "description": "Rasakan perpaduan sempurna antara kualitas, efisiensi, dan keandalan dengan mesin es Escool.",
+    "description": "Rasakan perpaduan sempurna antara kualitas, efisiensi, dan keandalan dengan mesin es Soocool.",
     "buyTikTok": "Beli di TikTok Shop",
     "buyShopee": "Beli di Shopee",
     "advantages": [
@@ -68,11 +68,20 @@
     },
     "filterAll": "Semua",
     "buyButton": "Beli Sekarang",
+    "power": "Daya",
+    "capacity": "Produksi Es",
+    "storage": "Penyimpanan Es",
     "featuredLabels": {
       "hot": "Terlaris",
       "commercial": "Rekomendasi Komersial",
       "highCapacity": "Kapasitas Besar"
     }
+  },
+  "factory": {
+    "title": "Pabrik Sendiri",
+    "subtitle": "Kami memiliki fasilitas produksi sendiri, mengendalikan seluruh proses dari R&D hingga manufaktur, memastikan setiap mesin es memenuhi standar kualitas tinggi. Pabrik kami dilengkapi dengan peralatan produksi canggih dan sistem inspeksi kualitas yang ketat, memberikan Anda jaminan produk yang andal.",
+    "imageAlt": "Pabrik",
+    "imageLabel": "Gambar Pabrik"
   },
   "services": {
     "title": "Layanan Kami",
@@ -97,7 +106,7 @@
       {
         "name": "Joko",
         "role": "Pemilik Minimart",
-        "content": "Mesin es Escool telah mengubah permainan untuk restoran kami. Kualitas dan keandalannya luar biasa!",
+        "content": "Mesin es Soocool telah mengubah permainan untuk restoran kami. Kualitas dan keandalannya luar biasa!",
         "rating": 5,
         "date": "Januari 2024",
         "business": "Joko Minimart"
@@ -105,7 +114,7 @@
       {
         "name": "Maria Garcia",
         "role": "Manajer Bar",
-        "content": "Kami telah menggunakan mesin Escool selama lebih dari 2 tahun. Kinerja yang sangat baik dan dukungan pelanggan yang hebat.",
+        "content": "Kami telah menggunakan mesin Soocool selama lebih dari 2 tahun. Kinerja yang sangat baik dan dukungan pelanggan yang hebat.",
         "rating": 5,
         "date": "Desember 2023",
         "business": "Garcia Bar & Restaurant"
@@ -113,7 +122,7 @@
       {
         "name": "David Chen",
         "role": "Direktur Hotel",
-        "content": "Sistem es industri dari Escool menangani permintaan tinggi kami dengan sempurna. Sangat direkomendasikan!",
+        "content": "Sistem es industri dari Soocool menangani permintaan tinggi kami dengan sempurna. Sangat direkomendasikan!",
         "rating": 5,
         "date": "Februari 2024",
         "business": "Grand Hotel Jakarta"
@@ -130,7 +139,8 @@
     "location": "Lokasi Kami",
     "followUs": "Ikuti Kami",
     "quickLinks": "Tautan Cepat",
-    "copyright": "© 2024 Escool. Hak cipta dilindungi."
+    "description": "Mesin es premium untuk kebutuhan bisnis Anda. Kualitas, efisiensi, dan keandalan.",
+    "copyright": "© 2024 Soocool. Hak cipta dilindungi."
   }
 }
 

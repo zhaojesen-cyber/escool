@@ -10,6 +10,8 @@ interface Product {
   code: string
   power: string
   type: ProductType
+  capacity?: string
+  storage?: string
   image: string
   shopeeUrl: string
   tiktokUrl: string
@@ -204,7 +206,7 @@ const Products = () => {
                   {/* Featured Badge */}
                   {product.featured && product.featuredLabel && (
                     <div className="absolute top-4 right-4 z-10 bg-[#1a7a1a] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                      {product.featuredLabel}
+                      {t(`products.featuredLabels.${product.featuredLabel}`)}
                     </div>
                   )}
                   
@@ -213,8 +215,11 @@ const Products = () => {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10"></div>
                     <img
                       src={product.image}
-                      alt={product.code}
+                      alt={`Soocool ${product.code} Ice Machine - ${product.capacity || ''} ${product.power || ''}`}
                       className="w-full h-full object-cover"
+                      loading="lazy"
+                      width="320"
+                      height="288"
                     />
                   </div>
                   
@@ -230,9 +235,21 @@ const Products = () => {
                           {getCategoryLabel(product.type)}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600">
-                        功率: <span className="font-semibold text-gray-900">{product.power}</span>
-                      </p>
+                      <div className="space-y-1.5">
+                        <p className="text-sm text-gray-600">
+                          {t('products.power')}: <span className="font-semibold text-gray-900">{product.power}</span>
+                        </p>
+                        {product.capacity && (
+                          <p className="text-sm text-gray-600">
+                            {t('products.capacity')}: <span className="font-semibold text-gray-900">{product.capacity}</span>
+                          </p>
+                        )}
+                        {product.storage && (
+                          <p className="text-sm text-gray-600">
+                            {t('products.storage')}: <span className="font-semibold text-gray-900">{product.storage}</span>
+                          </p>
+                        )}
+                      </div>
                     </div>
                     
                     {/* Buy Button */}

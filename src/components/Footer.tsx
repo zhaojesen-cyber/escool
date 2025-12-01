@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { MapPin, Facebook, Instagram, Twitter } from 'lucide-react'
+import { MapPin, Facebook, Instagram } from 'lucide-react'
 
 const Footer = () => {
   const { t } = useTranslation()
@@ -17,9 +17,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">Escool</h3>
+            <h3 className="text-2xl font-bold mb-4">Soocool</h3>
             <p className="text-gray-400 leading-relaxed">
-              Premium ice machines for your business needs. Quality, efficiency, and reliability.
+              {t('footer.description')}
             </p>
           </div>
 
@@ -67,11 +67,14 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">{t('footer.location')}</h4>
             <div className="flex items-start gap-3 text-gray-400">
               <MapPin className="w-5 h-5 mt-1 shrink-0" />
-              <p className="leading-relaxed">
-                Your Company Address<br />
-                City, Country<br />
-                Postal Code
-              </p>
+              <a
+                href="https://www.google.com/maps/place/PT.+Multi+Citra+Rejeki+(MCR)/@-6.147168,106.89958,19z/data=!3m1!4b1!4m6!3m5!1s0x2e69f5a8e44e5b23:0x62e1e094abffe175!8m2!3d-6.147168!4d106.9002237!16s%2Fg%2F11s0skvlnc?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="leading-relaxed hover:text-white transition-colors"
+              >
+                Gading Kirana Utara Blok A13 No. 33, RT.18/RW.8, Klp. Gading Bar., Kec. Klp. Gading, Jkt Utara, Daerah Khusus Ibukota Jakarta 14240
+              </a>
             </div>
           </div>
 
@@ -80,7 +83,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">{t('footer.followUs')}</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
@@ -91,7 +94,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/soocool.indonesia"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
@@ -100,22 +103,13 @@ const Footer = () => {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/soocool.indonesia"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
               </a>
             </div>
           </div>

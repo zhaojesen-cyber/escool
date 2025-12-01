@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import allProductsData from '../data/products.json'
 
 const SEO = () => {
   const { t, i18n } = useTranslation()
@@ -14,19 +15,19 @@ const SEO = () => {
       // SEO content based on language
       const seoContent = {
         zh: {
-          title: 'Escool - 优质制冰机品牌 | 专业制冰机制造商',
-          description: 'Escool 提供专业级制冰机，满足您的业务需求。质量、效率和可靠性的完美结合。从小型家用机到大型商用机，我们提供完整的制冰解决方案。',
-          keywords: '制冰机,商用制冰机,家用制冰机,制冰机品牌,Escool,制冰设备,制冰系统',
+          title: 'Soocool - 优质制冰机品牌 | 专业制冰机制造商',
+          description: 'Soocool 提供专业级制冰机，满足您的业务需求。质量、效率和可靠性的完美结合。从小型家用机到大型商用机，我们提供完整的制冰解决方案。',
+          keywords: '制冰机,商用制冰机,家用制冰机,制冰机品牌,Soocool,制冰设备,制冰系统,印尼制冰机',
         },
         id: {
-          title: 'Escool - Mesin Es Premium | Produsen Mesin Es Profesional',
-          description: 'Escool menyediakan mesin es kelas profesional untuk kebutuhan bisnis Anda. Perpaduan sempurna antara kualitas, efisiensi, dan keandalan. Dari mesin rumah kecil hingga mesin komersial besar.',
-          keywords: 'mesin es,mesin es komersial,mesin es rumah,produsen mesin es,Escool,peralatan es,sistem es',
+          title: 'Soocool - Mesin Es Premium | Produsen Mesin Es Profesional',
+          description: 'Soocool menyediakan mesin es kelas profesional untuk kebutuhan bisnis Anda. Perpaduan sempurna antara kualitas, efisiensi, dan keandalan. Dari mesin rumah kecil hingga mesin komersial besar.',
+          keywords: 'mesin es,mesin es komersial,mesin es rumah,produsen mesin es,Soocool,peralatan es,sistem es,mesin es Jakarta',
         },
         en: {
-          title: 'Escool - Premium Ice Machine | Professional Ice Machine Manufacturer',
-          description: 'Escool provides professional-grade ice machines for your business needs. The perfect blend of quality, efficiency, and reliability. From small home units to large commercial systems, we offer complete ice solutions.',
-          keywords: 'ice machine,commercial ice machine,home ice maker,ice machine brand,Escool,ice equipment,ice system',
+          title: 'Soocool - Premium Ice Machine | Professional Ice Machine Manufacturer',
+          description: 'Soocool provides professional-grade ice machines for your business needs. The perfect blend of quality, efficiency, and reliability. From small home units to large commercial systems, we offer complete ice solutions.',
+          keywords: 'ice machine,commercial ice machine,home ice maker,ice machine brand,Soocool,ice equipment,ice system,ice machine Indonesia',
         },
       }
 
@@ -56,10 +57,16 @@ const SEO = () => {
       updateMetaTag('robots', 'index, follow')
       
       // Author
-      updateMetaTag('author', 'Escool')
+      updateMetaTag('author', 'Soocool')
       
       // Viewport (already in HTML, but ensure it's correct)
       updateMetaTag('viewport', 'width=device-width, initial-scale=1.0')
+
+      // Additional SEO meta tags
+      updateMetaTag('geo.region', 'ID-JK')
+      updateMetaTag('geo.placename', 'Jakarta')
+      updateMetaTag('geo.position', '-6.147168;106.9002237')
+      updateMetaTag('ICBM', '-6.147168, 106.9002237')
 
       // Update lang attribute
       document.documentElement.lang = lang
@@ -83,13 +90,8 @@ const SEO = () => {
       updateMetaTag('og:image:height', '630', 'property')
       updateMetaTag('og:image:alt', content.title, 'property')
       updateMetaTag('og:locale', lang === 'zh' ? 'zh_CN' : lang === 'id' ? 'id_ID' : 'en_US', 'property')
-      updateMetaTag('og:site_name', 'Escool', 'property')
+      updateMetaTag('og:site_name', 'Soocool', 'property')
 
-      // Twitter Card tags
-      updateMetaTag('twitter:card', 'summary_large_image', 'name')
-      updateMetaTag('twitter:title', content.title, 'name')
-      updateMetaTag('twitter:description', content.description, 'name')
-      updateMetaTag('twitter:image', `${baseUrl}/logo.png`, 'name')
 
       // Alternate language links
       const updateAlternateLink = (langCode: string, href: string) => {
@@ -109,37 +111,187 @@ const SEO = () => {
       updateAlternateLink('x-default', currentUrl)
 
       // Structured Data (JSON-LD)
-      let structuredData = document.querySelector('script[type="application/ld+json"]')
-      if (!structuredData) {
-        structuredData = document.createElement('script')
-        structuredData.setAttribute('type', 'application/ld+json')
-        document.head.appendChild(structuredData)
-      }
+      const products = allProductsData as Array<{
+        id: string
+        code: string
+        power: string
+        capacity?: string
+        storage?: string
+        image: string
+        shopeeUrl: string
+      }>
 
-      const jsonLd = {
+      // Organization Schema
+      const organizationSchema = {
         '@context': 'https://schema.org',
         '@type': 'Organization',
-        name: 'Escool',
+        name: 'Soocool',
+        alternateName: 'PT. Multi Citra Rejeki (MCR)',
         description: content.description,
         url: baseUrl,
         logo: `${baseUrl}/logo.png`,
-        sameAs: [
-          // Add your social media URLs here
-        ],
+        image: `${baseUrl}/logo.png`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Gading Kirana Utara Blok A13 No. 33, RT.18/RW.8, Klp. Gading Bar.',
+          addressLocality: 'Kec. Klp. Gading, Jkt Utara',
+          addressRegion: 'Jakarta',
+          postalCode: '14240',
+          addressCountry: 'ID'
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: -6.147168,
+          longitude: 106.9002237
+        },
+        telephone: '+62-852-1003-2851',
         contactPoint: {
           '@type': 'ContactPoint',
+          telephone: '+62-852-1003-2851',
           contactType: 'Customer Service',
           availableLanguage: ['English', 'Chinese', 'Indonesian'],
+          areaServed: 'ID',
+          contactOption: 'TollFree'
         },
-        offers: {
-          '@type': 'AggregateOffer',
-          offerCount: '7',
-          lowPrice: '0',
-          priceCurrency: 'USD',
-        },
+        sameAs: [
+          'https://shopee.co.id/soocool.mall',
+          'https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/',
+          'https://www.facebook.com/soocool.indonesia',
+          'https://www.instagram.com/soocool.indonesia'
+        ],
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '5',
+          reviewCount: '3',
+          bestRating: '5',
+          worstRating: '1'
+        }
       }
 
-      structuredData.textContent = JSON.stringify(jsonLd)
+      // LocalBusiness Schema
+      const localBusinessSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        '@id': `${baseUrl}#business`,
+        name: 'Soocool',
+        image: `${baseUrl}/logo.png`,
+        description: content.description,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Gading Kirana Utara Blok A13 No. 33, RT.18/RW.8, Klp. Gading Bar.',
+          addressLocality: 'Kec. Klp. Gading, Jkt Utara',
+          addressRegion: 'Jakarta',
+          postalCode: '14240',
+          addressCountry: 'ID'
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: -6.147168,
+          longitude: 106.9002237
+        },
+        telephone: '+62-852-1003-2851',
+        priceRange: '$$',
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+          ],
+          opens: '09:00',
+          closes: '18:00'
+        }
+      }
+
+      // Product Schemas
+      const productSchemas = products.map(product => ({
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: `Soocool ${product.code} Ice Machine`,
+        description: `${content.description} Model ${product.code} with ${product.capacity || 'high'} ice production capacity.`,
+        brand: {
+          '@type': 'Brand',
+          name: 'Soocool'
+        },
+        sku: product.code,
+        image: `${baseUrl}${product.image}`,
+        offers: {
+          '@type': 'Offer',
+          url: product.shopeeUrl,
+          priceCurrency: 'IDR',
+          availability: 'https://schema.org/InStock',
+          seller: {
+            '@type': 'Organization',
+            name: 'Soocool'
+          }
+        },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '5',
+          reviewCount: '1',
+          bestRating: '5'
+        },
+        additionalProperty: [
+          {
+            '@type': 'PropertyValue',
+            name: 'Power',
+            value: product.power
+          },
+          ...(product.capacity ? [{
+            '@type': 'PropertyValue',
+            name: 'Ice Production Capacity',
+            value: product.capacity
+          }] : []),
+          ...(product.storage ? [{
+            '@type': 'PropertyValue',
+            name: 'Ice Storage Capacity',
+            value: product.storage
+          }] : [])
+        ]
+      }))
+
+      // BreadcrumbList Schema
+      const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: baseUrl
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: lang === 'zh' ? '产品' : lang === 'id' ? 'Produk' : 'Products',
+            item: `${baseUrl}#products`
+          }
+        ]
+      }
+
+      // Remove old structured data
+      const oldStructuredData = document.querySelectorAll('script[type="application/ld+json"]')
+      oldStructuredData.forEach(script => script.remove())
+
+      // Add all structured data
+      const allSchemas = [
+        organizationSchema,
+        localBusinessSchema,
+        breadcrumbSchema,
+        ...productSchemas
+      ]
+
+      allSchemas.forEach((schema, index) => {
+        const script = document.createElement('script')
+        script.setAttribute('type', 'application/ld+json')
+        script.setAttribute('id', `structured-data-${index}`)
+        script.textContent = JSON.stringify(schema)
+        document.head.appendChild(script)
+      })
     }
 
     updateMetaTags()
@@ -149,4 +301,3 @@ const SEO = () => {
 }
 
 export default SEO
-

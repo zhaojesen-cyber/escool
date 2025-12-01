@@ -60,9 +60,12 @@ const Hero = () => {
           <div className="relative flex items-center justify-center order-first lg:order-last">
             <div className="w-full max-w-xl">
               <img
-                src="/logo.png"
-                alt="Escool Ice Machine"
+                src="/machine/SC-20F.png"
+                alt="Soocool SC-20F Ice Machine"
                 className="w-full h-auto object-contain"
+                loading="eager"
+                width="600"
+                height="600"
               />
             </div>
           </div>
