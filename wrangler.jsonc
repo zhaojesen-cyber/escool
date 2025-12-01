@@ -1,0 +1,8 @@
+{
+  // Cloudflare Workers assets config for this project
+  "name": "escool",
+  "compatibility_date": "2025-12-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
