@@ -115,18 +115,38 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden text-gray-900 hover:text-[#1a7a1a] transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          {/* Mobile Language Selector & Menu Button */}
+          <div className="lg:hidden flex items-center gap-3">
+            {/* Mobile Language Selector */}
+            <div className="relative">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  const currentIndex = languages.findIndex(l => l.code === i18n.language)
+                  const nextIndex = (currentIndex + 1) % languages.length
+                  changeLanguage(languages[nextIndex].code)
+                }}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-900 font-bold text-sm transition-colors"
+                aria-label="Change language"
+              >
+                <Globe className="w-4 h-4" />
+                <span className="uppercase text-xs">{i18n.language}</span>
+              </button>
+            </div>
+            
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-gray-900 hover:text-[#1a7a1a] transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -164,20 +184,20 @@ const Header = () => {
                 {t('header.contact')}
               </button>
               <div className="pt-4 border-t border-gray-200">
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-3">
                   <Globe className="w-5 h-5 text-gray-900" />
-                  <span className="text-base font-bold text-gray-900">Language</span>
+                  <span className="text-base font-bold text-gray-900">{t('header.language')}</span>
                 </div>
                 <div className="flex flex-col gap-2">
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
-                    className={`text-left px-4 py-2 text-base rounded-lg transition-colors ${
-                      i18n.language === lang.code
-                        ? 'bg-[#1a7a1a]/20 text-[#1a7a1a] font-bold'
-                        : 'text-gray-700 hover:bg-gray-100 font-semibold'
-                    }`}
+                      className={`w-full text-left px-4 py-3 text-base rounded-lg transition-colors cursor-pointer ${
+                        i18n.language === lang.code
+                          ? 'bg-[#1a7a1a] text-white font-bold'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100 font-semibold'
+                      }`}
                     >
                       {lang.name}
                     </button>
