@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { MapPin, Facebook, Instagram } from 'lucide-react'
+import { MapPin, Facebook, Instagram, Youtube } from 'lucide-react'
 
 const Footer = () => {
   const { t } = useTranslation()
@@ -83,7 +83,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">{t('footer.followUs')}</h4>
             <div className="flex gap-4">
               <a
-                href="https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/"
+                href="https://www.tiktok.com/@soocool.indonesia?is_from_webapp=1&sender_device=pc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
@@ -94,7 +94,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/soocool.indonesia"
+                href="https://www.facebook.com/profile.php?id=61581101786961"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#1a7a1a] transition-colors"
@@ -110,6 +110,15 @@ const Footer = () => {
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.youtube.com/@SOOCOOL.INDONESIA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
               </a>
             </div>
           </div>

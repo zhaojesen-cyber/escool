@@ -155,9 +155,10 @@ const SEO = () => {
         },
         sameAs: [
           'https://shopee.co.id/soocool.mall',
-          'https://vt.tiktok.com/ZSHTYVj5fwj6j-kHOnd/',
-          'https://www.facebook.com/soocool.indonesia',
-          'https://www.instagram.com/soocool.indonesia'
+          'https://www.tiktok.com/@soocool.indonesia',
+          'https://www.facebook.com/profile.php?id=61581101786961',
+          'https://www.instagram.com/soocool.indonesia',
+          'https://www.youtube.com/@SOOCOOL.INDONESIA'
         ],
         aggregateRating: {
           '@type': 'AggregateRating',
