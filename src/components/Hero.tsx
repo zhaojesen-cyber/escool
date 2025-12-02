@@ -15,7 +15,7 @@ const Hero = () => {
           {/* Left: Content */}
           <div className="text-center lg:text-left space-y-4 sm:space-y-6 lg:space-y-8">
             <div className="space-y-4 sm:space-y-5 lg:space-y-6">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-gray-900 leading-tight tracking-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
                 {t('hero.title')}
               </h1>
               <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-xl lg:max-w-none mx-auto lg:mx-0">
