@@ -1,67 +1,35 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import { defaultLocale, dictionaries, locales, type Locale } from '../site/content'
 
-import en from './locales/en.json';
-import zh from './locales/zh.json';
-import id from './locales/id.json';
+const resources = Object.fromEntries(
+  locales.map(locale => [locale, { translation: dictionaries[locale] }]),
+)
 
-// Supported languages
-const supportedLanguages = ['en', 'zh', 'id'];
+let initPromise: Promise<typeof i18n> | null = null
 
-// Function to normalize language code
-const normalizeLanguage = (lang: string): string => {
-  // Convert to lowercase
-  lang = lang.toLowerCase();
-  
-  // Handle Chinese variants
-  if (lang.startsWith('zh')) {
-    return 'zh';
-  }
-  
-  // Handle Indonesian variants
-  if (lang.startsWith('id')) {
-    return 'id';
-  }
-  
-  // Handle English variants
-  if (lang.startsWith('en')) {
-    return 'en';
-  }
-  
-  // Default to English if not supported
-  return 'en';
-};
-
-i18n
-  .use(LanguageDetector)
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: { translation: en },
-      zh: { translation: zh },
-      id: { translation: id },
-    },
-    fallbackLng: 'en',
-    supportedLngs: supportedLanguages,
-    defaultNS: 'translation',
-    interpolation: {
-      escapeValue: false,
-    },
-    detection: {
-      // Check navigator first, then localStorage, then htmlTag
-      order: ['navigator', 'localStorage', 'htmlTag'],
-      caches: ['localStorage'],
-      // Convert detected language to our supported format
-      convertDetectedLanguage: (lng: string) => {
-        return normalizeLanguage(lng);
+export async function initI18n(locale: Locale = defaultLocale) {
+  if (!i18n.isInitialized) {
+    initPromise ??= i18n.use(initReactI18next).init({
+      resources,
+      lng: locale,
+      fallbackLng: defaultLocale,
+      supportedLngs: locales,
+      defaultNS: 'translation',
+      interpolation: {
+        escapeValue: false,
       },
-      // Look for language in these places
-      lookupLocalStorage: 'i18nextLng',
-      lookupFromPathIndex: 0,
-      lookupFromSubdomainIndex: 0,
-    },
-  });
+    })
 
-export default i18n;
+    await initPromise
+    return i18n
+  }
 
+  if (i18n.language !== locale) {
+    await i18n.changeLanguage(locale)
+  }
+
+  return i18n
+}
+
+export default i18n

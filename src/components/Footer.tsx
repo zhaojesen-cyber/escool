@@ -1,15 +1,14 @@
 import { useTranslation } from 'react-i18next'
 import { MapPin, Facebook, Instagram, Youtube } from 'lucide-react'
+import { getSectionPath, type SitePageContext } from '../site/content'
 
-const Footer = () => {
+interface FooterProps {
+  page: SitePageContext
+}
+
+const Footer = ({ page }: FooterProps) => {
   const { t } = useTranslation()
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  const locale = page.locale
 
   return (
     <footer className="bg-gray-900 text-white py-12 lg:py-16">
@@ -28,36 +27,24 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               <li>
-                <button
-                  onClick={() => scrollToSection('hero')}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <a href={getSectionPath(locale, 'hero')} className="text-gray-400 hover:text-white transition-colors">
                   {t('header.home')}
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('products')}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <a href={getSectionPath(locale, 'products')} className="text-gray-400 hover:text-white transition-colors">
                   {t('header.products')}
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <a href={getSectionPath(locale, 'services')} className="text-gray-400 hover:text-white transition-colors">
                   {t('header.services')}
-                </button>
+                </a>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection('testimonials')}
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <a href={getSectionPath(locale, 'testimonials')} className="text-gray-400 hover:text-white transition-colors">
                   {t('header.testimonials')}
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -133,4 +120,3 @@ const Footer = () => {
 }
 
 export default Footer
-

@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Menu, X, Globe } from 'lucide-react'
+import { getHomePath, getLocalizedPagePath, getSectionPath, type SitePageContext } from '../site/content'
 
-const Header = () => {
-  const { t, i18n } = useTranslation()
+interface HeaderProps {
+  page: SitePageContext
+}
+
+const Header = ({ page }: HeaderProps) => {
+  const { t } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -15,23 +20,20 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang)
-    setIsMenuOpen(false)
-  }
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-      setIsMenuOpen(false)
-    }
-  }
-
   const languages = [
     { code: 'en', name: 'English' },
     { code: 'zh', name: '中文' },
     { code: 'id', name: 'Bahasa' },
+  ] as const
+
+  const currentLanguage = page.locale
+  const homePath = getHomePath(page.locale)
+  const navItems = [
+    { label: t('header.home'), href: getHomePath(page.locale) },
+    { label: t('header.products'), href: getSectionPath(page.locale, 'products') },
+    { label: t('header.services'), href: getSectionPath(page.locale, 'services') },
+    { label: t('header.testimonials'), href: getSectionPath(page.locale, 'testimonials') },
+    { label: t('header.contact'), href: getSectionPath(page.locale, 'contact') },
   ]
 
   return (
@@ -46,70 +48,46 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20 gap-4">
           {/* Logo */}
           <div className="flex items-center">
-            <button
-              onClick={() => scrollToSection('hero')}
-              className="flex items-center"
-            >
+            <a href={homePath} className="flex items-center">
               <img 
                 src="/newlogo.png" 
                 alt="Soocool Logo" 
                 className="h-12 lg:h-14 w-auto"
               />
-            </button>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-4 lg:gap-6">
-            <button
-              onClick={() => scrollToSection('hero')}
-              className="text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-            >
-              {t('header.home')}
-            </button>
-            <button
-              onClick={() => scrollToSection('products')}
-              className="text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-            >
-              {t('header.products')}
-            </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className="text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-            >
-              {t('header.services')}
-            </button>
-            <button
-              onClick={() => scrollToSection('testimonials')}
-              className="text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-            >
-              {t('header.testimonials')}
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-            >
-              {t('header.contact')}
-            </button>
+            {navItems.map(item => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
 
             {/* Language Selector */}
             <div className="relative group">
               <button className="flex items-center gap-2 text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors">
                 <Globe className="w-5 h-5" />
-                <span className="uppercase">{i18n.language}</span>
+                <span className="uppercase">{currentLanguage}</span>
               </button>
               <div className="absolute right-0 top-full mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {languages.map((lang) => (
-                  <button
+                  <a
                     key={lang.code}
-                    onClick={() => changeLanguage(lang.code)}
+                    href={getLocalizedPagePath(page, lang.code)}
                     className={`w-full text-left px-4 py-2 text-base hover:bg-gray-100 first:rounded-t-lg last:rounded-b-lg transition-colors ${
-                      i18n.language === lang.code
+                      currentLanguage === lang.code
                         ? 'bg-[#1a7a1a]/20 text-[#1a7a1a] font-bold'
                         : 'text-gray-700 font-semibold'
                     }`}
                   >
                     {lang.name}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -122,15 +100,15 @@ const Header = () => {
               <button
                 onClick={(e) => {
                   e.stopPropagation()
-                  const currentIndex = languages.findIndex(l => l.code === i18n.language)
+                  const currentIndex = languages.findIndex(l => l.code === currentLanguage)
                   const nextIndex = (currentIndex + 1) % languages.length
-                  changeLanguage(languages[nextIndex].code)
+                  window.location.href = getLocalizedPagePath(page, languages[nextIndex].code)
                 }}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-900 font-bold text-sm transition-colors"
                 aria-label="Change language"
               >
                 <Globe className="w-4 h-4" />
-                <span className="uppercase text-xs">{i18n.language}</span>
+                <span className="uppercase text-xs">{currentLanguage}</span>
               </button>
             </div>
             
@@ -153,36 +131,16 @@ const Header = () => {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col gap-4">
-              <button
-                onClick={() => scrollToSection('hero')}
-                className="text-left text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-              >
-                {t('header.home')}
-              </button>
-              <button
-                onClick={() => scrollToSection('products')}
-                className="text-left text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-              >
-                {t('header.products')}
-              </button>
-              <button
-                onClick={() => scrollToSection('services')}
-                className="text-left text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-              >
-                {t('header.services')}
-              </button>
-              <button
-                onClick={() => scrollToSection('testimonials')}
-                className="text-left text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-              >
-                {t('header.testimonials')}
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-left text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
-              >
-                {t('header.contact')}
-              </button>
+              {navItems.map(item => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-left text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
+                >
+                  {item.label}
+                </a>
+              ))}
               <div className="pt-4 border-t border-gray-200">
                 <div className="flex items-center gap-2 mb-3">
                   <Globe className="w-5 h-5 text-gray-900" />
@@ -190,17 +148,17 @@ const Header = () => {
                 </div>
                 <div className="flex flex-col gap-2">
                   {languages.map((lang) => (
-                    <button
+                    <a
                       key={lang.code}
-                      onClick={() => changeLanguage(lang.code)}
+                      href={getLocalizedPagePath(page, lang.code)}
                       className={`w-full text-left px-4 py-3 text-base rounded-lg transition-colors cursor-pointer ${
-                        i18n.language === lang.code
+                        currentLanguage === lang.code
                           ? 'bg-[#1a7a1a] text-white font-bold'
                           : 'bg-gray-50 text-gray-700 hover:bg-gray-100 font-semibold'
                       }`}
                     >
                       {lang.name}
-                    </button>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -213,4 +171,3 @@ const Header = () => {
 }
 
 export default Header
-

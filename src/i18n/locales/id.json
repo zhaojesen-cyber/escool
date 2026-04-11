@@ -8,9 +8,9 @@
     "language": "Bahasa"
   },
   "hero": {
-    "title": "Mesin Es Premium oleh Soocool",
-    "subtitle": "Mesin es kelas profesional untuk kebutuhan bisnis Anda",
-    "description": "Rasakan perpaduan sempurna antara kualitas, efisiensi, dan keandalan dengan mesin es Soocool.",
+    "title": "Mesin Es Batu, Mesin Es Kristal, dan Ice Maker Portable Soocool",
+    "subtitle": "Mesin es cube untuk rumah, cafe, kantor, dan kebutuhan bisnis di Indonesia",
+    "description": "Temukan mesin es daya rendah, ice maker kapasitas 12kg, hingga mesin es komersial Soocool dengan dukungan lokal di Jakarta.",
     "buyTikTok": "Beli di TikTok Shop",
     "buyShopee": "Beli di Shopee",
     "advantages": [
@@ -19,6 +19,28 @@
       "Sistem Kontrol Pintar",
       "Layanan Purna Jual Profesional"
     ]
+  },
+  "seoGuide": {
+    "title": "Panduan Memilih Mesin Es yang Paling Dicari",
+    "subtitle": "Halaman ini disusun untuk membantu pembeli yang sedang mencari mesin es batu, mesin es kristal, mesin es cube, atau ice maker portable.",
+    "intro": "Jika Anda membandingkan beberapa jenis mesin es, perhatikan bentuk es, kapasitas produksi harian, konsumsi daya, dan apakah unit perlu dipindahkan dengan mudah. Untuk kebutuhan rumah tangga dan usaha kecil, model portable dengan daya rendah sering menjadi pilihan paling efisien.",
+    "items": [
+      {
+        "title": "Mesin es batu dan mesin es kristal",
+        "body": "Untuk penggunaan minuman harian, cafe kecil, atau rumah tangga, pembeli biasanya mencari mesin es batu yang stabil, cepat, dan mudah dirawat. Mesin es kristal atau mesin es cube cocok untuk hasil es yang rapi dan praktis."
+      },
+      {
+        "title": "Mesin es cube untuk usaha kecil",
+        "body": "Jika Anda membutuhkan hasil es yang konsisten untuk minuman dingin, mesin es cube cocok untuk toko minuman, minimarket, pantry kantor, dan dapur usaha kecil yang butuh suplai es rutin."
+      },
+      {
+        "title": "Ice maker kapasitas 12kg yang portable",
+        "body": "Untuk pencarian seperti ice maker kapasitas 12kg, mesin es daya rendah, atau mesin ice maker portable, model ES-12B menjadi opsi yang relevan karena ukurannya ringkas, mudah ditempatkan, dan cocok untuk kebutuhan ringan sampai menengah."
+      }
+    ],
+    "outroPrefix": "Jika Anda sedang fokus mencari",
+    "outroLink": "ice maker kapasitas 12kg",
+    "outroSuffix": "atau mesin es portable dengan konsumsi daya lebih ringan, lihat detail model ES-12B."
   },
   "products": {
     "title": "Produk Kami",
@@ -68,6 +90,7 @@
       }
     },
     "filterAll": "Semua",
+    "viewDetails": "Lihat Detail",
     "buyButton": "Beli Sekarang",
     "power": "Daya",
     "capacity": "Produksi Es",
@@ -134,14 +157,84 @@
     "title": "Konsultasi Kustom",
     "subtitle": "Butuh solusi kustom?",
     "description": "Hubungi kami melalui WhatsApp untuk konsultasi yang dipersonalisasi",
-    "button": "Hubungi di WhatsApp"
+    "button": "Hubungi di WhatsApp",
+    "whatsappMessage": "Halo, saya ingin berkonsultasi tentang solusi mesin es yang sesuai untuk kebutuhan saya."
+  },
+  "faq": {
+    "title": "Pertanyaan yang Sering Diajukan",
+    "subtitle": "Jawaban untuk pertanyaan yang paling sering ditanyakan sebelum memilih mesin es Soocool.",
+    "items": [
+      {
+        "question": "Bagaimana cara memilih kapasitas mesin es yang tepat?",
+        "answer": "Pilih berdasarkan kebutuhan harian, ruang instalasi, dan jenis usaha Anda. Untuk rumah tangga dan kantor cukup menggunakan model kecil, sedangkan kafe, restoran, dan toko sebaiknya mempertimbangkan kapasitas komersial yang lebih besar."
+      },
+      {
+        "question": "Apa perbedaan mesin es batu, mesin es kristal, dan mesin es cube?",
+        "answer": "Pada praktik pencarian online, istilah mesin es batu, mesin es kristal, dan mesin es cube sering dipakai untuk mencari mesin pembuat es berbentuk kubus yang rapi untuk minuman. Yang paling penting adalah kapasitas, konsumsi daya, dan kecocokan mesin dengan skala penggunaan Anda."
+      },
+      {
+        "question": "Apakah Soocool menyediakan instalasi dan layanan purna jual?",
+        "answer": "Ya. Soocool membantu dengan konsultasi, panduan instalasi, dan dukungan purna jual agar mesin dapat bekerja stabil untuk penggunaan harian."
+      },
+      {
+        "question": "Bisakah saya meminta rekomendasi sebelum membeli?",
+        "answer": "Tentu. Hubungi tim melalui WhatsApp, jelaskan kebutuhan Anda, lalu kami akan membantu merekomendasikan model berdasarkan kapasitas, penyimpanan, dan lingkungan penggunaan."
+      }
+    ]
+  },
+  "productPage": {
+    "breadcrumbAriaLabel": "Breadcrumb",
+    "breadcrumbHome": "Beranda",
+    "breadcrumbProducts": "Produk",
+    "titleTemplate": "Mesin Es {{code}}",
+    "descriptionTemplate": "{{code}} adalah {{category}} dari Soocool yang dirancang untuk {{useCase}}. Model ini menawarkan {{capacity}} dengan performa yang stabil untuk kebutuhan harian bisnis.",
+    "imageAlt": "{{code}} {{category}} dari Soocool",
+    "categoryLabel": "Rekomendasi penggunaan",
+    "powerLabel": "Daya",
+    "capacityLabel": "Produksi es",
+    "storageLabel": "Penyimpanan es",
+    "multipleOptions": "beberapa pilihan tersedia",
+    "onRequest": "tersedia sesuai permintaan",
+    "buyShopee": "Beli di Shopee",
+    "buyTikTok": "Beli di TikTok Shop",
+    "askWhatsApp": "Tanya lewat WhatsApp",
+    "overviewTitle": "Kenapa model ini cocok",
+    "overviewBody": "{{code}} cocok untuk pembeli yang membutuhkan performa {{category}}. Model ini sesuai untuk {{useCase}} dan membantu bisnis memilih mesin yang lebih tepat untuk operasional harian.",
+    "highlights": [
+      "Produksi langsung dari pabrik",
+      "Dukungan lokal di Jakarta",
+      "Output stabil untuk penggunaan harian"
+    ],
+    "supportTitle": "Perlu bantuan memilih model yang tepat?",
+    "supportBody": "Ceritakan skenario penggunaan, target produksi, dan ukuran toko Anda. Tim Soocool dapat membantu mempersempit pilihan model sebelum Anda membeli.",
+    "supportButton": "Hubungi Soocool",
+    "keywordSpotlightTitle": "Cocok untuk pencarian ice maker 12kg dan mesin es portable",
+    "keywordSpotlightBody": "ES-12B adalah model yang paling relevan untuk kata kunci seperti ice maker kapasitas 12kg, mesin es daya rendah, dan mesin ice maker portable. Halaman ini membantu pembeli memahami kenapa model ringkas ini cocok untuk rumah, pantry kantor, dan usaha minuman skala kecil.",
+    "keywordSpotlightItems": [
+      {
+        "title": "Ice maker kapasitas 12kg",
+        "body": "Kapasitas 12kg per hari cocok untuk kebutuhan es harian yang tidak terlalu besar tetapi tetap ingin pasokan stabil."
+      },
+      {
+        "title": "Mesin es daya rendah",
+        "body": "Dengan daya 112W, model ini relevan untuk pembeli yang mencari mesin es dengan konsumsi listrik yang lebih ringan."
+      },
+      {
+        "title": "Mesin ice maker portable",
+        "body": "Ukuran yang lebih ringkas membuat ES-12B lebih mudah ditempatkan di dapur rumah, pantry, booth minuman, atau area kerja kecil."
+      }
+    ],
+    "relatedTitle": "Model terkait",
+    "relatedSubtitle": "Bandingkan model serupa sebelum memutuskan.",
+    "backToProducts": "Kembali ke semua produk",
+    "notFoundTitle": "Produk tidak ditemukan",
+    "whatsappMessage": "Halo, saya tertarik dengan {{code}} ({{category}}). Mohon info konfigurasi yang direkomendasikan dan ketersediaannya."
   },
   "footer": {
     "location": "Lokasi Kami",
     "followUs": "Ikuti Kami",
     "quickLinks": "Tautan Cepat",
     "description": "Mesin es premium untuk kebutuhan bisnis Anda. Kualitas, efisiensi, dan keandalan.",
-    "copyright": "© 2024 Soocool. Hak cipta dilindungi."
+    "copyright": "© 2026 Soocool. Hak cipta dilindungi."
   }
 }
-

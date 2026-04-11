@@ -8,9 +8,9 @@
     "language": "语言"
   },
   "hero": {
-    "title": "Soocool 优质制冰机",
-    "subtitle": "满足您业务需求的专业级制冰机",
-    "description": "体验 Soocool 制冰机在质量、效率和可靠性方面的完美结合。",
+    "title": "Soocool 家用与商用制冰机",
+    "subtitle": "适合家庭、办公室、咖啡店和小型商用场景的 cube ice maker",
+    "description": "可了解低功率便携制冰机、12kg 级 ice maker，以及更高产能的商用制冰设备。",
     "buyTikTok": "在 TikTok Shop 购买",
     "buyShopee": "在 Shopee 购买",
     "advantages": [
@@ -19,6 +19,28 @@
       "智能控制系统",
       "专业售后服务"
     ]
+  },
+  "seoGuide": {
+    "title": "热门制冰机搜索需求参考",
+    "subtitle": "帮助访客快速理解便携制冰机、cube ice maker 和小型低功率机型的差别。",
+    "intro": "选购制冰机时，通常要看制冰形态、日产量、功率以及机器是否足够紧凑，能否放在家庭厨房、办公室茶水间或小型饮品档口。",
+    "items": [
+      {
+        "title": "日常饮品用方块冰机",
+        "body": "很多访客会找适合饮品使用的方块冰或晶体冰机型，重点通常还是日产量、机器尺寸和维护便利度。"
+      },
+      {
+        "title": "便携型制冰机",
+        "body": "便携型机型适合家庭、办公室和小型柜台场景，优点是摆放灵活、启动快、适合轻量日常用冰。"
+      },
+      {
+        "title": "12kg 和低功率需求",
+        "body": "如果更关注 12kg 左右产能和较低功耗，ES-12B 这类小型机型通常更贴近这类搜索需求。"
+      }
+    ],
+    "outroPrefix": "如果你当前主要在比较",
+    "outroLink": "12kg 便携制冰机",
+    "outroSuffix": "，可以先查看 ES-12B 详情页。"
   },
   "products": {
     "title": "我们的产品",
@@ -68,6 +90,7 @@
       }
     },
     "filterAll": "全部",
+    "viewDetails": "查看详情",
     "buyButton": "立即购买",
     "power": "功率",
     "capacity": "制冰量",
@@ -134,14 +157,84 @@
     "title": "定制咨询",
     "subtitle": "需要定制解决方案？",
     "description": "通过 WhatsApp 联系我们进行个性化咨询",
-    "button": "在 WhatsApp 上联系"
+    "button": "在 WhatsApp 上联系",
+    "whatsappMessage": "您好，我想咨询适合我需求的制冰机方案。"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "在选择 Soocool 制冰机前，客户最常问的几个问题。",
+    "items": [
+      {
+        "question": "应该如何选择合适的制冰量？",
+        "answer": "可以根据每日用冰需求、安装空间和使用场景来选择。家庭和办公室通常适合较小型号，咖啡店、餐厅和商铺则更适合产能更高的商用机型。"
+      },
+      {
+        "question": "方块冰机、晶体冰机和便携 ice maker 有什么区别？",
+        "answer": "这几类词在搜索中往往都指向适合饮品使用的紧凑型制冰机。实际选购时，更应该重点看日产量、功率和机器是否适合你的使用空间。"
+      },
+      {
+        "question": "是否提供安装和售后支持？",
+        "answer": "提供。Soocool 可提供咨询、安装指导和售后支持，帮助设备在日常营业中稳定运行。"
+      },
+      {
+        "question": "购买前可以先咨询推荐型号吗？",
+        "answer": "可以。您可以通过 WhatsApp 联系团队，说明使用场景和产能需求，我们会根据储冰量、产冰量和使用环境推荐合适机型。"
+      }
+    ]
+  },
+  "productPage": {
+    "breadcrumbAriaLabel": "面包屑导航",
+    "breadcrumbHome": "首页",
+    "breadcrumbProducts": "产品",
+    "titleTemplate": "{{code}} 制冰机",
+    "descriptionTemplate": "{{code}} 是 Soocool 的{{category}}，适合 {{useCase}}，可提供 {{capacity}}，满足日常营业中的稳定制冰需求。",
+    "imageAlt": "Soocool {{code}} {{category}}",
+    "categoryLabel": "推荐场景",
+    "powerLabel": "功率",
+    "capacityLabel": "制冰量",
+    "storageLabel": "储冰量",
+    "multipleOptions": "支持多种规格",
+    "onRequest": "可按需求提供",
+    "buyShopee": "在 Shopee 购买",
+    "buyTikTok": "在 TikTok Shop 购买",
+    "askWhatsApp": "WhatsApp 咨询",
+    "overviewTitle": "为什么这款机型值得考虑",
+    "overviewBody": "{{code}} 适合希望获得 {{category}} 表现的客户，适用于 {{useCase}}，能帮助门店或项目更稳定地完成日常制冰需求。",
+    "highlights": [
+      "工厂直供",
+      "雅加达本地支持",
+      "适合日常稳定运行"
+    ],
+    "supportTitle": "需要帮助挑选合适型号？",
+    "supportBody": "告诉我们您的使用场景、目标产能和店铺规模，Soocool 团队会协助缩小选择范围，帮助您更快找到合适机型。",
+    "supportButton": "联系 Soocool",
+    "keywordSpotlightTitle": "适合 12kg 便携制冰机需求",
+    "keywordSpotlightBody": "ES-12B 更贴近用户对 12kg 级便携制冰机、低功率 ice maker 和轻量日常用冰设备的搜索需求，适合家庭、办公室和小型饮品场景。",
+    "keywordSpotlightItems": [
+      {
+        "title": "12kg 级日产量",
+        "body": "适合日常轻量到中等强度的用冰需求，兼顾产量和机器体积。"
+      },
+      {
+        "title": "较低功耗",
+        "body": "112W 功率更适合关注能耗和长期日常使用成本的买家。"
+      },
+      {
+        "title": "便于摆放",
+        "body": "体积更紧凑，适合家庭厨房、茶水间、小型吧台或工作区。"
+      }
+    ],
+    "relatedTitle": "相关机型",
+    "relatedSubtitle": "在决定前可以先比较相近型号。",
+    "backToProducts": "返回全部产品",
+    "notFoundTitle": "未找到该产品",
+    "whatsappMessage": "您好，我对 {{code}}（{{category}}）感兴趣，请提供推荐配置和库存情况。"
   },
   "footer": {
     "location": "我们的位置",
     "followUs": "关注我们",
     "quickLinks": "快速链接",
     "description": "满足您业务需求的优质制冰机。质量、效率和可靠性。",
-    "copyright": "© 2024 Soocool. 保留所有权利。"
+    "copyright": "© 2026 Soocool. 保留所有权利。"
   }
 }
-

@@ -8,9 +8,9 @@
     "language": "Language"
   },
   "hero": {
-    "title": "Premium Ice Machines by Soocool",
-    "subtitle": "Professional-grade ice machines for your business needs",
-    "description": "Experience the perfect blend of quality, efficiency, and reliability with Soocool ice machines.",
+    "title": "Portable and Commercial Ice Machines by Soocool",
+    "subtitle": "Cube ice makers for homes, offices, cafes, and business use",
+    "description": "Explore low-power portable ice makers, 12kg ice makers, and larger commercial ice machines with local support in Indonesia.",
     "buyTikTok": "Buy on TikTok Shop",
     "buyShopee": "Buy on Shopee",
     "advantages": [
@@ -19,6 +19,28 @@
       "Smart Control System",
       "Professional After-Sales Service"
     ]
+  },
+  "seoGuide": {
+    "title": "How buyers compare popular ice machine types",
+    "subtitle": "A quick guide for visitors comparing cube ice makers, portable units, and low-power daily-use machines.",
+    "intro": "When people compare ice machines, they usually look at ice shape, daily output, energy usage, and whether the machine is compact enough for kitchens, pantries, or small beverage counters.",
+    "items": [
+      {
+        "title": "Cube ice and crystal-style ice makers",
+        "body": "Buyers often search for ice machines that produce clean cube-style ice for drinks, small shops, and home use. The practical decision usually comes down to output, size, and maintenance."
+      },
+      {
+        "title": "Portable machines for lighter usage",
+        "body": "Portable ice makers are useful for homes, offices, and small counters that need flexible placement and quick access to daily ice production."
+      },
+      {
+        "title": "12kg and low-power models",
+        "body": "A 12kg portable ice maker is a strong fit for lighter demand, especially when buyers also care about lower power consumption and easier setup."
+      }
+    ],
+    "outroPrefix": "If you are mainly comparing",
+    "outroLink": "12kg portable ice makers",
+    "outroSuffix": "you can start with the ES-12B product page."
   },
   "products": {
     "title": "Our Products",
@@ -68,6 +90,7 @@
       }
     },
     "filterAll": "All",
+    "viewDetails": "View Details",
     "buyButton": "Buy Now",
     "power": "Power",
     "capacity": "Ice Production",
@@ -134,14 +157,84 @@
     "title": "Custom Consultation",
     "subtitle": "Need a custom solution?",
     "description": "Contact us via WhatsApp for personalized consultation",
-    "button": "Contact on WhatsApp"
+    "button": "Contact on WhatsApp",
+    "whatsappMessage": "Hello, I would like to inquire about custom ice machine solutions."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to the questions buyers usually ask before choosing a Soocool machine.",
+    "items": [
+      {
+        "question": "How do I choose the right ice machine capacity?",
+        "answer": "Choose based on daily demand, installation space, and the type of business you run. Home and office users usually need smaller models, while cafes, restaurants, and markets should focus on larger commercial output."
+      },
+      {
+        "question": "What do buyers usually mean by cube ice, crystal ice, or portable ice maker?",
+        "answer": "These terms often describe compact machines that make drink-ready cube-style ice. In practice, output, energy use, and placement flexibility matter more than the exact search phrase."
+      },
+      {
+        "question": "Do you provide installation and after-sales support?",
+        "answer": "Yes. Soocool supports customers with consultation, installation guidance, and after-sales service so the machine can keep running reliably in daily use."
+      },
+      {
+        "question": "Can I ask for a recommendation before buying?",
+        "answer": "Yes. You can contact the team on WhatsApp, describe your usage scenario, and get a recommendation based on your required output, storage, and operating environment."
+      }
+    ]
+  },
+  "productPage": {
+    "breadcrumbAriaLabel": "Breadcrumb",
+    "breadcrumbHome": "Home",
+    "breadcrumbProducts": "Products",
+    "titleTemplate": "{{code}} Ice Machine",
+    "descriptionTemplate": "{{code}} is a Soocool {{category}} designed for {{useCase}}. It offers {{capacity}} with dependable output for daily business use.",
+    "imageAlt": "{{code}} {{category}} by Soocool",
+    "categoryLabel": "Recommended scenario",
+    "powerLabel": "Power",
+    "capacityLabel": "Ice production",
+    "storageLabel": "Ice storage",
+    "multipleOptions": "multiple options available",
+    "onRequest": "available on request",
+    "buyShopee": "Buy on Shopee",
+    "buyTikTok": "Buy on TikTok Shop",
+    "askWhatsApp": "Ask on WhatsApp",
+    "overviewTitle": "Why this model works",
+    "overviewBody": "{{code}} fits buyers looking for {{category}} performance. It is suitable for {{useCase}} and gives a more predictable equipment choice for daily operations.",
+    "highlights": [
+      "Factory-direct production",
+      "Local support in Jakarta",
+      "Stable output for daily use"
+    ],
+    "supportTitle": "Need help choosing the right model?",
+    "supportBody": "Share your usage scenario, target output, and store size. The team can help narrow down the most suitable model before you place an order.",
+    "supportButton": "Talk to Soocool",
+    "keywordSpotlightTitle": "A strong match for 12kg portable ice maker searches",
+    "keywordSpotlightBody": "ES-12B is the closest match for buyers looking for a portable ice maker around 12kg per day with lower power use and a compact footprint for lighter-duty daily needs.",
+    "keywordSpotlightItems": [
+      {
+        "title": "12kg daily output",
+        "body": "This output level is suitable for homes, pantry use, and small beverage setups that need a steady but lighter daily supply of ice."
+      },
+      {
+        "title": "Lower power consumption",
+        "body": "At 112W, the ES-12B is relevant for buyers who want a smaller machine with more manageable energy use."
+      },
+      {
+        "title": "Portable-friendly footprint",
+        "body": "Its compact size makes it easier to place in smaller kitchens, counters, and work areas where mobility and space efficiency matter."
+      }
+    ],
+    "relatedTitle": "Related models",
+    "relatedSubtitle": "Compare similar models before you decide.",
+    "backToProducts": "Back to all products",
+    "notFoundTitle": "Product not found",
+    "whatsappMessage": "Hello, I am interested in {{code}} ({{category}}). Please share the recommended configuration and availability."
   },
   "footer": {
     "location": "Our Location",
     "followUs": "Follow Us",
     "quickLinks": "Quick Links",
     "description": "Premium ice machines for your business needs. Quality, efficiency, and reliability.",
-    "copyright": "© 2024 Soocool. All rights reserved."
+    "copyright": "© 2026 Soocool. All rights reserved."
   }
 }
-

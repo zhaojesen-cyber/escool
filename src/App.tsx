@@ -1,40 +1,22 @@
 import { useEffect } from 'react'
-import { useTranslation } from 'react-i18next'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Products from './components/Products'
-import Factory from './components/Factory'
-import Services from './components/Services'
-import Testimonials from './components/Testimonials'
-import Consultation from './components/Consultation'
-import Footer from './components/Footer'
-import SEO from './components/SEO'
+import HomePage from './pages/HomePage'
+import ProductPage from './pages/ProductPage'
+import type { SitePageContext } from './site/content'
 
-function App() {
-  const { i18n } = useTranslation()
+interface AppProps {
+  page: SitePageContext
+}
 
+function App({ page }: AppProps) {
   useEffect(() => {
-    // Update HTML lang attribute when language changes
-    const currentLang = i18n.language || 'en'
-    document.documentElement.lang = currentLang
-  }, [i18n.language])
+    document.documentElement.lang = page.locale
+  }, [page.locale])
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden w-full">
-      <SEO />
-      <Header />
-      <main className="overflow-x-hidden w-full">
-        <Hero />
-        <Products />
-        <Factory />
-        <Services />
-        <Testimonials />
-        <Consultation />
-      </main>
-      <Footer />
+      {page.kind === 'home' ? <HomePage page={page} /> : <ProductPage page={page} />}
     </div>
   )
 }
 
 export default App
-

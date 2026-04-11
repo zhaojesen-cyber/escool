@@ -4,14 +4,9 @@ import { MessageCircle } from 'lucide-react'
 const Consultation = () => {
   const { t } = useTranslation()
 
-  // Replace with your actual WhatsApp number
-  const whatsappNumber = '6285210032851' // Format: country code + number without +
-  const whatsappMessage = encodeURIComponent('Hello, I would like to inquire about custom ice machine solutions.')
-
-  const openWhatsApp = () => {
-    const url = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
-    window.open(url, '_blank')
-  }
+  const whatsappNumber = '6285210032851'
+  const whatsappMessage = encodeURIComponent(t('consultation.whatsappMessage'))
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
   return (
     <section
@@ -38,13 +33,15 @@ const Consultation = () => {
           <p className="text-lg text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
             {t('consultation.description')}
           </p>
-          <button
-            onClick={openWhatsApp}
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-3 bg-white text-[#25D366] px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-50 transition-all duration-300 hover:scale-110 shadow-2xl hover:shadow-3xl"
           >
             <MessageCircle className="w-6 h-6" />
             {t('consultation.button')}
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -52,4 +49,3 @@ const Consultation = () => {
 }
 
 export default Consultation
-

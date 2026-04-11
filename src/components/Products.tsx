@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight, Home, Users, Store, Building2 } from 'lucide-react'
 import allProductsData from '../data/products.json'
+import { getProductPath, type Locale } from '../site/content'
 
 type ProductType = 'all' | 'small-home' | 'medium-home' | 'small-commercial' | 'large-commercial'
 
@@ -19,8 +20,12 @@ interface Product {
   featuredLabel?: string
 }
 
-const Products = () => {
-  const { t, i18n } = useTranslation()
+interface ProductsProps {
+  locale: Locale
+}
+
+const Products = ({ locale }: ProductsProps) => {
+  const { t } = useTranslation()
   const [selectedType, setSelectedType] = useState<ProductType>('small-home')
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [showLeftArrow, setShowLeftArrow] = useState(false)
@@ -254,6 +259,12 @@ const Products = () => {
                     
                     {/* Buy Button */}
                     <a
+                      href={getProductPath(locale, product)}
+                      className="inline-flex items-center mt-2 mr-3 justify-center text-[#1a7a1a] font-bold hover:text-[#0d4d0d] transition-colors"
+                    >
+                      {t('products.viewDetails')}
+                    </a>
+                    <a
                       href={product.shopeeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -276,4 +287,3 @@ const Products = () => {
 }
 
 export default Products
-
