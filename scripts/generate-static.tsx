@@ -9,7 +9,6 @@ import {
   type SitePageContext,
   getLocalizedPagePath,
   getPagePath,
-  getPreferredLocale,
   getProductPath,
   getProductSlug,
   isDefaultLocalePath,
