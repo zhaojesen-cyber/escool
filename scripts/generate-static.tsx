@@ -7,9 +7,12 @@ import {
   locales,
   products,
   type SitePageContext,
+  getLocalizedPagePath,
   getPagePath,
+  getPreferredLocale,
   getProductPath,
   getProductSlug,
+  isDefaultLocalePath,
 } from '../src/site/content'
 import {
   getAlternateLinks,
@@ -59,6 +62,20 @@ function toOutputFile(page: SitePageContext) {
   return path.join(distDir, pagePath.slice(1), 'index.html')
 }
 
+function getAutoLocaleRedirectScript(page: SitePageContext) {
+  const pagePath = getPagePath(page)
+
+  if (page.locale !== defaultLocale || !isDefaultLocalePath(pagePath)) {
+    return ''
+  }
+
+  const targetPaths = Object.fromEntries(
+    locales.map(locale => [locale, getLocalizedPagePath(page, locale)]),
+  )
+
+  return `<script>(function(){try{var stored=localStorage.getItem('preferredLocale');var target=(function(input){if(!input)return '${defaultLocale}';var normalized=String(input).toLowerCase();if(normalized.indexOf('zh')===0)return 'zh';if(normalized.indexOf('en')===0)return 'en';if(normalized.indexOf('id')===0||normalized.indexOf('in')===0)return 'id';return '${defaultLocale}';})(stored||navigator.language);if(target==='${defaultLocale}')return;var destinations=${safeJson(targetPaths)};var next=destinations[target];if(next&&next!==location.pathname){location.replace(next);}}catch(e){}})();</script>`
+}
+
 function renderDocument(page: SitePageContext, appHtml: string, manifestEntry: ManifestEntry, siteUrl: string) {
   const seo = getPageSeo(page, siteUrl)
   const alternates = getAlternateLinks(page, siteUrl)
@@ -80,6 +97,7 @@ function renderDocument(page: SitePageContext, appHtml: string, manifestEntry: M
   const structuredScripts = structuredData
     .map(schema => `<script type="application/ld+json">${safeJson(schema)}</script>`)
     .join('\n    ')
+  const autoLocaleRedirectScript = getAutoLocaleRedirectScript(page)
 
   return `<!doctype html>
 <html lang="${page.locale}">
@@ -89,6 +107,7 @@ function renderDocument(page: SitePageContext, appHtml: string, manifestEntry: M
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');</script>
     <!-- End Google Tag Manager -->
+    ${autoLocaleRedirectScript}
     <meta name="description" content="${escapeHtml(seo.description)}" />
     <meta name="keywords" content="${escapeHtml(seo.keywords)}" />
     <meta name="author" content="Soocool" />
@@ -168,8 +187,11 @@ Allow: /
 Sitemap: ${siteUrl}/sitemap.xml
 `
 
-  const redirects = `/id /id/ 301
+  const redirects = `/en /en/ 301
 /zh /zh/ 301
+/id / 301
+/id/ /
+/id/* /:splat 301
 `
 
   await writeFile(path.join(distDir, 'robots.txt'), robots, 'utf8')

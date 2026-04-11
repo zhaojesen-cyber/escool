@@ -3,8 +3,8 @@ import id from '../i18n/locales/id.json'
 import zh from '../i18n/locales/zh.json'
 import productsData from '../data/products.json'
 
-export const defaultLocale = 'en' as const
-export const locales = ['en', 'id', 'zh'] as const
+export const defaultLocale = 'id' as const
+export const locales = ['id', 'en', 'zh'] as const
 
 export type Locale = (typeof locales)[number]
 export type ProductType = 'all' | 'small-home' | 'medium-home' | 'small-commercial' | 'large-commercial'
@@ -50,6 +50,18 @@ export function normalizeLocale(locale?: string): Locale {
   if (!locale) return defaultLocale
   const normalized = locale.toLowerCase()
   return locales.find(item => item === normalized) ?? defaultLocale
+}
+
+export function getPreferredLocale(candidate?: string | null): Locale {
+  if (!candidate) return defaultLocale
+
+  const normalized = candidate.toLowerCase()
+
+  if (normalized.startsWith('zh')) return 'zh'
+  if (normalized.startsWith('en')) return 'en'
+  if (normalized.startsWith('id') || normalized.startsWith('in')) return 'id'
+
+  return defaultLocale
 }
 
 export function getProductSlug(code: string): string {
@@ -162,4 +174,14 @@ export function getPageFromPath(pathname: string): SitePageContext {
   }
 
   return { kind: 'home', locale: defaultLocale }
+}
+
+export function isDefaultLocalePath(pathname: string): boolean {
+  const normalizedPath = pathname.replace(/\/+/g, '/')
+  const trimmed = normalizedPath.replace(/^\/|\/$/g, '')
+
+  if (!trimmed) return true
+
+  const segments = trimmed.split('/')
+  return segments[0] === 'products' && segments.length >= 2
 }

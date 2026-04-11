@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Menu, X, Globe } from 'lucide-react'
-import { getHomePath, getLocalizedPagePath, getSectionPath, type SitePageContext } from '../site/content'
+import {
+  getHomePath,
+  getLocalizedPagePath,
+  getSectionPath,
+  type Locale,
+  type SitePageContext,
+} from '../site/content'
 
 interface HeaderProps {
   page: SitePageContext
@@ -35,6 +41,14 @@ const Header = ({ page }: HeaderProps) => {
     { label: t('header.testimonials'), href: getSectionPath(page.locale, 'testimonials') },
     { label: t('header.contact'), href: getSectionPath(page.locale, 'contact') },
   ]
+
+  const rememberLocale = (locale: Locale) => {
+    try {
+      window.localStorage.setItem('preferredLocale', locale)
+    } catch {
+      // Ignore storage failures and continue navigation.
+    }
+  }
 
   return (
     <header
@@ -71,16 +85,21 @@ const Header = ({ page }: HeaderProps) => {
 
             {/* Language Selector */}
             <div className="relative group">
-              <button className="flex items-center gap-2 text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors">
+              <button
+                type="button"
+                className="flex items-center gap-2 text-gray-900 hover:text-[#1a7a1a] font-bold text-lg transition-colors"
+              >
                 <Globe className="w-5 h-5" />
                 <span className="uppercase">{currentLanguage}</span>
               </button>
-              <div className="absolute right-0 top-full mt-2 w-32 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-20">
+                <div className="flex min-w-32 flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg">
                 {languages.map((lang) => (
                   <a
                     key={lang.code}
                     href={getLocalizedPagePath(page, lang.code)}
-                    className={`w-full text-left px-4 py-2 text-base hover:bg-gray-100 first:rounded-t-lg last:rounded-b-lg transition-colors ${
+                    onClick={() => rememberLocale(lang.code)}
+                    className={`block w-full text-left px-4 py-2 text-base hover:bg-gray-100 transition-colors ${
                       currentLanguage === lang.code
                         ? 'bg-[#1a7a1a]/20 text-[#1a7a1a] font-bold'
                         : 'text-gray-700 font-semibold'
@@ -89,6 +108,7 @@ const Header = ({ page }: HeaderProps) => {
                     {lang.name}
                   </a>
                 ))}
+                </div>
               </div>
             </div>
           </div>
@@ -102,6 +122,7 @@ const Header = ({ page }: HeaderProps) => {
                   e.stopPropagation()
                   const currentIndex = languages.findIndex(l => l.code === currentLanguage)
                   const nextIndex = (currentIndex + 1) % languages.length
+                  rememberLocale(languages[nextIndex].code)
                   window.location.href = getLocalizedPagePath(page, languages[nextIndex].code)
                 }}
                 className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-900 font-bold text-sm transition-colors"
@@ -151,6 +172,7 @@ const Header = ({ page }: HeaderProps) => {
                     <a
                       key={lang.code}
                       href={getLocalizedPagePath(page, lang.code)}
+                      onClick={() => rememberLocale(lang.code)}
                       className={`w-full text-left px-4 py-3 text-base rounded-lg transition-colors cursor-pointer ${
                         currentLanguage === lang.code
                           ? 'bg-[#1a7a1a] text-white font-bold'
