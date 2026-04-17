@@ -28,25 +28,25 @@ function buildAbsoluteUrl(siteUrl: string, path: string): string {
 function getHomeSeo(locale: Locale) {
   const seo = {
     zh: {
-      title: 'Soocool - 优质制冰机品牌 | 专业制冰机制造商',
+      title: 'Escool (Soocool) - 优质制冰机品牌 | 专业制冰机制造商',
       description:
-        'Soocool 提供家用与商用制冰机、安装维护支持和工厂直供服务，帮助印尼企业找到合适的制冰解决方案。',
+        'Escool (Soocool) 提供家用与商用制冰机、安装维护支持和工厂直供服务，帮助印尼企业找到合适的制冰解决方案。',
       keywords:
-        '制冰机,商用制冰机,家用制冰机,印尼制冰机,Jakarta 制冰机,Soocool,制冰设备,制冰机厂家',
+        '制冰机,商用制冰机,家用制冰机,印尼制冰机,Jakarta 制冰机,Soocool,Escool,escool.id,制冰设备,制冰机厂家',
     },
     id: {
-      title: 'Soocool - Mesin Es Batu, Mesin Es Kristal, Mesin Es Cube & Ice Maker Portable',
+      title: 'Escool (Soocool) - Mesin Es Batu, Mesin Es Kristal, Mesin Es Cube & Ice Maker Portable',
       description:
-        'Soocool menyediakan mesin es batu, mesin es kristal, mesin es cube, serta ice maker portable kapasitas 12kg dengan daya rendah untuk rumah, cafe, dan bisnis di Indonesia.',
+        'Escool (Soocool) menyediakan mesin es batu, mesin es kristal, mesin es cube, serta ice maker portable kapasitas 12kg dengan daya rendah untuk rumah, cafe, dan bisnis di Indonesia.',
       keywords:
-        'mesin es batu,mesin es kristal,mesin es cube,ice maker kapasitas 12kg,mesin es daya rendah,mesin ice maker portable,mesin es Jakarta,Soocool',
+        'mesin es batu,mesin es kristal,mesin es cube,ice maker kapasitas 12kg,mesin es daya rendah,mesin ice maker portable,mesin es Jakarta,Soocool,Escool,escool.id',
     },
     en: {
-      title: 'Soocool - Premium Ice Machines | Commercial and Home Ice Machine Manufacturer',
+      title: 'Escool (Soocool) - Premium Ice Machines | Commercial and Home Ice Machine Manufacturer',
       description:
-        'Soocool supplies home and commercial ice machines with factory-direct production, local support in Jakarta, and dependable after-sales service.',
+        'Escool (Soocool) supplies home and commercial ice machines with factory-direct production, local support in Jakarta, and dependable after-sales service.',
       keywords:
-        'ice machine,commercial ice machine,home ice maker,ice machine Indonesia,ice machine Jakarta,Soocool,ice machine supplier',
+        'ice machine,commercial ice machine,home ice maker,ice machine Indonesia,ice machine Jakarta,Soocool,Escool,escool.id,ice machine supplier',
     },
   } as const
 
@@ -104,7 +104,7 @@ function getOrganizationSchema(siteUrl: string, description: string) {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Soocool',
-    alternateName: 'PT. Multi Citra Rejeki (MCR)',
+    alternateName: ['PT. Multi Citra Rejeki (MCR)', 'Escool', 'escool.id'],
     url: siteUrl,
     logo: `${siteUrl}/logo.png`,
     image: `${siteUrl}/logo.png`,
