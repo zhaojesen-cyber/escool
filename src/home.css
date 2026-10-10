@@ -1,0 +1,491 @@
+/* Homepage composition. The site scope keeps inner-page layouts independent.
+   Full-width section colour uses paint rather than viewport-sized layout boxes. */
+.soocool-site .home-page {
+  --home-gutter: clamp(24px, 4vw, 52px);
+}
+.soocool-site .home-page .home-band {
+  --band-color: #f1f7fb;
+  background: var(--band-color);
+  box-shadow: 0 0 0 100vmax var(--band-color);
+  clip-path: inset(0 -100vmax);
+}
+.soocool-site .home-page .hero {
+  position: relative;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 0;
+  min-height: 660px;
+  overflow: visible;
+  --band-color: #eef6fc;
+  border-radius: 0;
+}
+.soocool-site .home-page .hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 72px 12px 60px 0;
+}
+.soocool-site .home-page .hero h1 {
+  font-size: clamp(48px, 5.25vw, 74px);
+  font-weight: 650;
+  line-height: 1.14;
+  letter-spacing: -0.045em;
+  margin: 0 0 28px;
+}
+html[lang="zh-CN"] .soocool-site .home-page .hero h1 {
+  letter-spacing: -0.035em;
+}
+.soocool-site .home-page .hero h1 .em {
+  color: #246ca5;
+}
+.soocool-site .home-page .hero .eyebrow {
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+.soocool-site .home-page .hero .lead {
+  max-width: 460px;
+  font-size: 16px;
+  line-height: 1.85;
+}
+.soocool-site .home-page .hero-actions {
+  gap: 12px;
+  margin-top: 32px;
+}
+.soocool-site .home-page .hero-actions .btn {
+  padding: 16px 24px;
+}
+.soocool-site .home-page .hero > .hero-ice {
+  align-self: stretch;
+  min-height: 620px;
+  margin: 0 -18px 0 0;
+  background: radial-gradient(
+    ellipse at 52% 46%,
+    #d3ecff 0%,
+    #e6f3fc 42%,
+    transparent 72%
+  );
+}
+.soocool-site .home-page .hero-ice:after {
+  content: "";
+  position: absolute;
+  inset: 9% 5% 13%;
+  border: 1px solid #9bc4df42;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+.soocool-site .home-page .ice-scene-wordmark {
+  left: 28px;
+  bottom: 42px;
+}
+.soocool-site .home-page .ice-scene-wordmark strong {
+  font-size: 20px;
+}
+.soocool-site .home-page .hero-micro {
+  margin-top: 28px;
+}
+.soocool-site .home-page .trust-strip {
+  --band-color: #eef6fc;
+  border-top: 1px solid #cedfeb;
+  border-bottom: 0;
+  padding: 28px 0 32px;
+  margin: 0;
+}
+.soocool-site .home-page .trust-item {
+  padding: 0 24px;
+}
+.soocool-site .home-page .trust-item:first-child {
+  padding-left: 0;
+}
+.soocool-site .home-page .section {
+  padding-top: 92px;
+  padding-bottom: 92px;
+}
+.soocool-site .home-page .section-head h2 {
+  max-width: 750px;
+  font-size: clamp(30px, 3.1vw, 42px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.soocool-site .home-page .section-head {
+  margin-bottom: 40px;
+}
+.soocool-site .home-page .section-head .eyebrow {
+  margin-bottom: 16px;
+}
+.soocool-site .home-page .range-showcase {
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+.soocool-site .home-page .range-slot {
+  min-width: 0;
+  padding: 28px;
+  background: #f5f8fa;
+  border: 1px solid #e7edf2;
+  border-radius: 12px;
+}
+.soocool-site .home-page .range-commercial {
+  grid-row: span 2;
+  background: linear-gradient(145deg, #e7f2fa, #f3f8fc);
+  border-color: #dce9f3;
+  padding: 32px;
+}
+.soocool-site .home-page .range-heading span {
+  font-size: 12px;
+  color: #49718f;
+}
+.soocool-site .home-page .range-heading h3 {
+  font-size: clamp(19px, 1.9vw, 25px);
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 8px 0 24px;
+}
+.soocool-site .home-page .product-card {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.soocool-site .home-page .product-visual {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  height: 310px;
+  padding: 8px 48px 24px;
+}
+.soocool-site .home-page .product-visual:hover {
+  background: #ffffff42;
+}
+.soocool-site .home-page .range-commercial .product-visual {
+  height: 390px;
+  padding: 12px 74px 32px;
+}
+.soocool-site .home-page .product-art img {
+  filter: drop-shadow(0 18px 14px #173c591c);
+}
+.soocool-site .home-page .product-info {
+  padding: 8px 0 0;
+}
+.soocool-site .home-page .product-info .kicker {
+  display: none;
+}
+.soocool-site .home-page .product-info h3 {
+  font-size: 27px;
+  margin-bottom: 8px;
+}
+.soocool-site .home-page .product-info p {
+  min-height: 0;
+  margin: 8px 0 14px;
+  line-height: 1.7;
+}
+.soocool-site .home-page .product-meta {
+  margin: 0;
+  padding: 12px 0;
+  gap: 20px;
+  border-top: 1px solid #cddde8;
+  border-bottom: 0;
+}
+.soocool-site .home-page .product-meta strong {
+  font-size: 19px;
+}
+.soocool-site .home-page .product-bottom {
+  margin: 6px 0 0;
+  padding-top: 4px;
+}
+.soocool-site .home-page .range-home .product-card,
+.soocool-site .home-page .range-modular .product-card {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 22px;
+  align-items: center;
+}
+.soocool-site .home-page .range-home .product-visual,
+.soocool-site .home-page .range-modular .product-visual {
+  height: 215px;
+  padding: 12px 0;
+}
+.soocool-site .home-page .range-home .product-meta,
+.soocool-site .home-page .range-modular .product-meta {
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 12px;
+}
+.soocool-site .home-page .range-home .product-meta strong,
+.soocool-site .home-page .range-modular .product-meta strong {
+  font-size: clamp(14px, 1.15vw, 16px);
+  white-space: nowrap;
+}
+.soocool-site .home-page .range-home {
+  background: #f0f6fb;
+}
+.soocool-site .home-page .home-selector {
+  --band-color: #e6f2fa;
+  margin: 0;
+  padding: 72px 0;
+  border: 0;
+  border-radius: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+.soocool-site .home-page .home-selector .feature-copy {
+  padding: 0;
+}
+.soocool-site .home-page .home-selector h2,
+.soocool-site .home-page .home-manufacturing h2 {
+  font-size: clamp(30px, 3.1vw, 42px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+.soocool-site .home-page .home-selector .lead {
+  color: #536f83;
+  margin-top: 24px;
+}
+.soocool-site .home-page .home-selector > .hero-carousel {
+  background: #f6fbfe;
+  border: 1px solid #d4e4ef;
+  margin: 0;
+  min-height: 530px;
+  border-radius: 12px;
+}
+.soocool-site .home-page .home-manufacturing {
+  --band-color: #f3f5f7;
+  grid-template-columns: 0.9fr 1.3fr;
+  gap: 64px;
+  border: 0;
+}
+.soocool-site .home-page .manufacturing-photos {
+  gap: 20px;
+  align-items: start;
+}
+.soocool-site .home-page .manufacturing-photos figure:last-child {
+  margin-top: 64px;
+}
+.soocool-site .home-page .manufacturing-photos img {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+}
+.soocool-site .home-page .manufacturing-photos figcaption {
+  line-height: 1.6;
+}
+.soocool-site .home-page .home-services .cards.three {
+  gap: 44px;
+}
+.soocool-site .home-page .home-services .simple-card {
+  padding-top: 28px;
+  border-top: 2px solid #b9d1e3;
+}
+.soocool-site .home-page .home-services .icon-box {
+  width: 48px;
+  height: 48px;
+  background: #edf5fb;
+  border-radius: 8px;
+  place-items: center;
+  margin-bottom: 24px;
+}
+.soocool-site .home-page .home-services .simple-card h3 {
+  font-size: 22px;
+}
+.soocool-site .home-page .home-reviews {
+  --band-color: #f1f7fb;
+}
+.soocool-site .home-page .rating-card {
+  padding: 32px 0 4px;
+  border-color: #b9d1e3;
+}
+.soocool-site .home-page .home-contact {
+  padding: 64px 0 80px;
+}
+.soocool-site .home-page .cta-band {
+  background: #e6f2fb;
+  padding: 48px;
+  border: 0;
+}
+@media (max-width: 1100px) {
+  .soocool-site .home-page .range-slot {
+    padding: 24px;
+  }
+  .soocool-site .home-page .range-commercial .product-visual {
+    padding-inline: 48px;
+  }
+  .soocool-site .home-page .range-home .product-card,
+  .soocool-site .home-page .range-modular .product-card {
+    gap: 16px;
+  }
+  .soocool-site .home-page .product-meta {
+    gap: 12px;
+  }
+  .soocool-site .home-page .product-meta strong {
+    font-size: 16px;
+  }
+  .soocool-site .home-page .home-selector,
+  .soocool-site .home-page .home-manufacturing {
+    gap: 36px;
+  }
+}
+@media (max-width: 900px) {
+  .soocool-site .home-page .hero {
+    min-height: 0;
+  }
+  .soocool-site .home-page .hero > .hero-ice {
+    min-height: 350px;
+    margin: 0;
+  }
+  .soocool-site .home-page .hero-copy {
+    padding: 16px 0 44px;
+  }
+  .soocool-site .home-page .hero h1 {
+    font-size: clamp(42px, 7.2vw, 62px);
+  }
+  .soocool-site .home-page .hero .lead {
+    max-width: 640px;
+  }
+  .soocool-site .home-page .ice-scene-wordmark {
+    bottom: 26px;
+  }
+  .soocool-site .home-page .trust-item {
+    padding: 0 12px;
+  }
+  .soocool-site .home-page .range-showcase {
+    grid-template-columns: 1fr 1fr;
+  }
+  .soocool-site .home-page .range-commercial {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .soocool-site .home-page .range-commercial .product-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .soocool-site .home-page .range-commercial .product-visual {
+    height: 300px;
+    padding: 12px 40px;
+  }
+  .soocool-site .home-page .range-home .product-card,
+  .soocool-site .home-page .range-modular .product-card {
+    display: block;
+  }
+  .soocool-site .home-page .range-home .product-visual,
+  .soocool-site .home-page .range-modular .product-visual {
+    padding: 12px 32px;
+  }
+  .soocool-site .home-page .home-selector,
+  .soocool-site .home-page .home-manufacturing {
+    grid-template-columns: 1fr;
+  }
+  .soocool-site .home-page .home-selector > .hero-carousel {
+    min-height: 480px;
+  }
+  .soocool-site .home-page .manufacturing-photos img {
+    aspect-ratio: 4 / 3;
+  }
+  .soocool-site .home-page .manufacturing-photos figure:last-child {
+    margin-top: 32px;
+  }
+  .soocool-site .home-page .home-services .cards.three {
+    gap: 24px;
+  }
+}
+@media (max-width: 640px) {
+  .soocool-site .home-page .hero > .hero-ice {
+    min-height: 290px;
+  }
+  .soocool-site .home-page .hero-copy {
+    padding: 8px 0 32px;
+  }
+  .soocool-site .home-page .hero h1 {
+    font-size: clamp(35px, 9vw, 46px);
+    margin-bottom: 20px;
+  }
+  .soocool-site .home-page .hero .eyebrow {
+    margin-bottom: 18px;
+    font-size: 12px;
+  }
+  .soocool-site .home-page .hero .lead {
+    font-size: 14px;
+  }
+  .soocool-site .home-page .hero-actions {
+    margin-top: 24px;
+  }
+  .soocool-site .home-page .hero-actions .btn {
+    padding: 13px 18px;
+  }
+  .soocool-site .home-page .hero-micro {
+    margin-top: 22px;
+  }
+  .soocool-site .home-page .ice-scene-wordmark {
+    left: 12px;
+    bottom: 20px;
+  }
+  .soocool-site .home-page .ice-scene-wordmark strong {
+    font-size: 14px;
+  }
+  .soocool-site .home-page .trust-strip {
+    padding: 24px 0;
+    gap: 22px 12px;
+  }
+  .soocool-site .home-page .trust-item {
+    padding: 0;
+  }
+  .soocool-site .home-page .section {
+    padding-block: 56px;
+  }
+  .soocool-site .home-page .section-head {
+    margin-bottom: 28px;
+  }
+  .soocool-site .home-page .section-head h2,
+  .soocool-site .home-page .home-selector h2,
+  .soocool-site .home-page .home-manufacturing h2 {
+    font-size: 28px;
+  }
+  .soocool-site .home-page .range-showcase {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .soocool-site .home-page .range-slot {
+    padding: 24px;
+  }
+  .soocool-site .home-page .range-commercial {
+    grid-column: auto;
+  }
+  .soocool-site .home-page .range-commercial .product-card {
+    display: block;
+  }
+  .soocool-site .home-page .range-commercial .product-visual {
+    height: 310px;
+    padding: 12px 54px 24px;
+  }
+  .soocool-site .home-page .range-home .product-visual,
+  .soocool-site .home-page .range-modular .product-visual {
+    height: 255px;
+    padding: 12px 54px 24px;
+  }
+  .soocool-site .home-page .range-heading h3 {
+    font-size: 21px;
+    margin-bottom: 18px;
+  }
+  .soocool-site .home-page .product-meta strong {
+    font-size: 18px;
+  }
+  .soocool-site .home-page .home-selector {
+    padding-block: 56px;
+    gap: 32px;
+  }
+  .soocool-site .home-page .home-selector > .hero-carousel {
+    min-height: 400px;
+  }
+  .soocool-site .home-page .manufacturing-photos {
+    gap: 12px;
+  }
+  .soocool-site .home-page .manufacturing-photos img {
+    aspect-ratio: 4 / 5;
+  }
+  .soocool-site .home-page .home-services .cards.three {
+    gap: 32px;
+  }
+  .soocool-site .home-page .home-contact {
+    padding: 40px 0 48px;
+  }
+  .soocool-site .home-page .cta-band {
+    padding: 32px 24px;
+  }
+}

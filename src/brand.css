@@ -1,0 +1,515 @@
+@import "./home.css";
+
+/* SOOCOOL visual system: ice white, equipment blue, and readable steel tones.
+   Component rules use a site scope to override the legacy layout consistently.
+   Palette values live in index.css; this file changes presentation only. */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+p {
+  text-wrap: pretty;
+}
+.soocool-site button,
+.soocool-site a {
+  touch-action: manipulation;
+}
+.soocool-site .topbar {
+  background: var(--ice-white);
+  color: var(--steel-muted);
+  border-color: var(--line);
+}
+.soocool-site .site-header {
+  background: #ffffffed;
+  border-color: var(--line);
+}
+.soocool-site .nav-item {
+  color: #435f72;
+}
+.soocool-site .nav-item:hover,
+.soocool-site .nav-item.active {
+  color: var(--brand-blue);
+}
+.soocool-site .lang-select select {
+  width: 92px;
+}
+.soocool-site .menu-toggle {
+  min-width: 44px;
+  min-height: 44px;
+}
+.soocool-site .btn {
+  min-height: 44px;
+  border-radius: 6px;
+}
+.soocool-site .btn:hover {
+  transform: none;
+}
+.soocool-site .btn.primary:hover {
+  background: #164873;
+}
+.soocool-site .btn.secondary {
+  border-color: #b3c8d7;
+  background: #ffffffb3;
+}
+.soocool-site .btn.secondary:hover {
+  background: var(--ice-blue);
+  border-color: var(--brand-blue);
+}
+.soocool-site .eyebrow,
+.soocool-site .kicker {
+  letter-spacing: 0;
+  text-transform: none;
+}
+.soocool-site .hero {
+  margin-top: 0;
+  min-height: 580px;
+  align-items: center;
+  grid-template-columns: 1fr 1.05fr;
+  background: linear-gradient(110deg, #fff 34%, #f1f8fc 100%);
+  overflow: clip;
+}
+.soocool-site .hero-copy {
+  padding: 64px 28px 60px 0;
+  min-width: 0;
+}
+.soocool-site .hero h1 {
+  font-size: clamp(40px, 4.5vw, 62px);
+  font-weight: 650;
+  line-height: 1.17;
+  letter-spacing: -0.045em;
+}
+.soocool-site .hero h1 .em {
+  color: inherit;
+}
+html[lang="zh-CN"] .soocool-site .hero h1 {
+  letter-spacing: -0.025em;
+}
+.soocool-site .hero .eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.soocool-site .hero .eyebrow:before {
+  width: 18px;
+  height: 2px;
+  border-radius: 0;
+}
+.soocool-site .hero .lead {
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 450px;
+  color: var(--steel-muted);
+}
+.soocool-site .hero-actions {
+  margin-top: 28px;
+}
+.soocool-site .hero-micro {
+  font-size: 12px;
+  color: var(--steel-muted);
+  gap: 12px 20px;
+  flex-wrap: wrap;
+}
+.soocool-site .store-link {
+  min-height: 44px;
+  border-color: var(--line);
+  border-radius: 6px;
+  color: var(--brand-blue);
+}
+.soocool-site .store-link:hover {
+  background: var(--ice-white);
+  border-color: var(--brand-blue);
+}
+.soocool-site .hero > .hero-ice {
+  margin: 0;
+  min-height: 560px;
+  background: radial-gradient(
+    ellipse at 54% 46%,
+    #e2f3fc 0%,
+    #f3f9fd80 60%,
+    transparent 78%
+  );
+  border-radius: 0;
+}
+.soocool-site .ice-scene:before {
+  background-size: 64px 64px;
+  background-image:
+    linear-gradient(#8aabc514 1px, transparent 1px),
+    linear-gradient(90deg, #8aabc514 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at center, #000, transparent 72%);
+}
+.soocool-site .ice-scene-wordmark {
+  left: 32px;
+  bottom: 28px;
+}
+.soocool-site .ice-scene-wordmark span {
+  color: var(--steel-muted);
+  letter-spacing: 0.15em;
+}
+.soocool-site .ice-scene-wordmark strong {
+  font-size: 16px;
+  color: var(--brand-blue);
+}
+.soocool-site .ice-motion-toggle {
+  top: 24px;
+  right: 24px;
+  bottom: auto;
+  width: 44px;
+  height: 44px;
+  border-color: var(--line);
+  background: #ffffffb3;
+}
+.soocool-site .trust-strip {
+  border-color: var(--line);
+  background: #fff;
+}
+.soocool-site .trust-item strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+.soocool-site .trust-item small {
+  font-size: 12px;
+  color: var(--steel-muted);
+  margin-top: 3px;
+}
+.soocool-site .section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.soocool-site .section.tight {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.soocool-site .section-head {
+  margin-bottom: 36px;
+}
+.soocool-site .section-head h2 {
+  max-width: 780px;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.35;
+}
+.soocool-site .section-head .lead {
+  font-size: 14px;
+  margin-top: 12px;
+}
+.soocool-site .cards.three {
+  gap: 28px;
+}
+.soocool-site .product-card:hover {
+  transform: none;
+}
+.soocool-site .product-visual {
+  background: linear-gradient(145deg, var(--ice-white), #edf4f8);
+  border: 1px solid #e6edf3;
+  border-radius: 8px;
+  height: 310px;
+  padding: 30px 34px 20px;
+}
+.soocool-site .product-visual:hover {
+  border-color: #9fbfda;
+}
+.soocool-site .product-info {
+  padding: 24px 4px 20px;
+}
+.soocool-site .product-info .kicker {
+  font-size: 12px;
+  color: var(--steel-muted);
+}
+.soocool-site .product-info h3 {
+  font-size: 23px;
+  letter-spacing: -0.02em;
+}
+.soocool-site .product-info p {
+  font-size: 13px;
+  line-height: 1.8;
+  min-height: 48px;
+}
+.soocool-site .product-meta small {
+  font-size: 11px;
+}
+.soocool-site .product-meta strong {
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.soocool-site .check-button {
+  min-height: 44px;
+  padding: 6px 4px;
+  font-size: 12px;
+}
+.soocool-site .split-feature {
+  background: var(--ice-white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  grid-template-columns: 1.1fr 1fr;
+}
+.soocool-site .split-feature .feature-copy {
+  padding: clamp(28px, 4vw, 52px);
+  align-self: center;
+  min-width: 0;
+}
+.soocool-site .split-feature h2 {
+  line-height: 1.3;
+}
+.soocool-site .split-feature > .hero-carousel {
+  background: #eaf3f9;
+  min-height: 510px;
+}
+.soocool-site .hero-carousel .hero-art {
+  filter: none;
+}
+.soocool-site .scene-tag {
+  border: 1px solid #dbe7f0;
+  box-shadow: none;
+  background: #ffffffd9;
+}
+.soocool-site .hero-controls > button,
+.soocool-site .hero-dots button,
+.soocool-site .round-arrow {
+  width: 44px;
+  height: 44px;
+}
+.soocool-site .hero-controls {
+  gap: 6px;
+}
+.soocool-site .hero-dots {
+  gap: 0;
+}
+.soocool-site .quick-industries button {
+  min-height: 44px;
+  padding: 10px 12px;
+  font-size: 12px;
+  border-color: #b4cadb;
+}
+.soocool-site .quick-industries button:hover {
+  background: var(--ice-blue);
+  border-color: var(--brand-blue);
+}
+.soocool-site .page-heading {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 32px;
+}
+.soocool-site .page-heading .lead {
+  max-width: 760px;
+}
+.soocool-site .tabs {
+  border-radius: 7px;
+  background: var(--ice-white);
+  border: 1px solid var(--line);
+}
+.soocool-site .tabs button {
+  min-height: 44px;
+}
+.soocool-site .tabs button:hover {
+  color: var(--brand-blue);
+}
+.soocool-site .tabs button.active {
+  background: var(--brand-blue);
+  color: #fff;
+  box-shadow: none;
+}
+.soocool-site .detail-art {
+  background: linear-gradient(145deg, var(--ice-white), #edf4f8);
+}
+.soocool-site .simple-card,
+.soocool-site .resource-card {
+  border-radius: 8px;
+}
+.soocool-site .home-services .simple-card {
+  border-radius: 0;
+}
+.soocool-site .rating-card {
+  border-top-width: 2px;
+  padding: 28px 0;
+}
+.soocool-site .rating-source {
+  color: var(--steel-muted);
+}
+.soocool-site .rating-score {
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.soocool-site .cta-band {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: linear-gradient(110deg, #f3f8fc, #e8f4fb);
+  padding: 40px;
+  gap: 28px;
+}
+.soocool-site .cta-band h2 {
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.35;
+}
+.soocool-site .cta-band p {
+  color: var(--steel-muted);
+}
+.soocool-site .footer-links a,
+.soocool-site .footer-links button,
+.soocool-site .social-link {
+  min-height: 32px;
+}
+.soocool-site .modal-overlay {
+  overscroll-behavior: contain;
+}
+@media (max-width: 1100px) {
+  .soocool-site .hero h1 {
+    font-size: clamp(38px, 4.5vw, 52px);
+  }
+  .soocool-site .trust-item {
+    gap: 12px;
+  }
+  .soocool-site .trust-item small {
+    font-size: 11px;
+  }
+  .soocool-site .cards.three {
+    gap: 20px;
+  }
+}
+@media (max-width: 900px) {
+  .soocool-site .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: linear-gradient(#f0f8fc, #fff 64%);
+    min-height: 0;
+  }
+  .soocool-site .hero > .hero-ice {
+    order: -1;
+    min-height: 380px;
+  }
+  .soocool-site .hero-copy {
+    padding: 32px 0 40px;
+  }
+  .soocool-site .hero .lead {
+    max-width: 620px;
+  }
+  .soocool-site .hero-micro {
+    gap: 12px 20px;
+  }
+  .soocool-site .split-feature {
+    grid-template-columns: 1fr;
+  }
+  .soocool-site .split-feature > .hero-carousel {
+    min-height: 430px;
+  }
+}
+@media (max-width: 640px) {
+  .soocool-site .hero {
+    border-radius: 0;
+  }
+  .soocool-site .hero > .hero-ice {
+    min-height: 270px;
+  }
+  .soocool-site .hero-copy {
+    padding: 24px 0 32px;
+  }
+  .soocool-site .hero h1 {
+    font-size: clamp(34px, 8.8vw, 43px);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+  .soocool-site .hero .eyebrow {
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+  .soocool-site .hero .lead {
+    font-size: 14px;
+  }
+  .soocool-site .hero-actions {
+    margin-top: 22px;
+  }
+  .soocool-site .hero-stores {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .soocool-site .hero-stores > span {
+    padding-top: 12px;
+  }
+  .soocool-site .hero-micro {
+    font-size: 11px;
+    gap: 10px 16px;
+  }
+  .soocool-site .ice-scene-wordmark {
+    left: 18px;
+    bottom: 16px;
+  }
+  .soocool-site .ice-scene-wordmark span {
+    margin-bottom: 4px;
+    font-size: 9px;
+  }
+  .soocool-site .ice-scene-wordmark strong {
+    font-size: 13px;
+  }
+  .soocool-site .ice-motion-toggle {
+    top: 12px;
+    right: 12px;
+  }
+  .soocool-site .section {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+  .soocool-site .section.tight {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+  .soocool-site .section-head {
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .soocool-site .section-head h2 {
+    font-size: 25px;
+  }
+  .soocool-site .section-head .lead {
+    font-size: 13px;
+  }
+  .soocool-site .cards.three {
+    gap: 24px;
+  }
+  .soocool-site .product-visual {
+    height: 280px;
+    padding: 24px 42px 18px;
+  }
+  .soocool-site .product-info {
+    padding: 20px 4px;
+  }
+  .soocool-site .product-info p {
+    min-height: 0;
+  }
+  .soocool-site .split-feature .feature-copy {
+    padding: 26px;
+  }
+  .soocool-site .split-feature > .hero-carousel {
+    min-height: 380px;
+  }
+  .soocool-site .hero-controls {
+    left: 12px;
+    right: 12px;
+    gap: 4px;
+  }
+  .soocool-site .trust-item strong {
+    font-size: 13px;
+  }
+  .soocool-site .trust-item small {
+    font-size: 11px;
+  }
+  .soocool-site .cta-band {
+    padding: 28px 24px;
+  }
+}
+@media (max-width: 380px) {
+  .soocool-site .brand strong {
+    font-size: 22px;
+  }
+  .soocool-site .lang-select .icon {
+    display: none;
+  }
+  .soocool-site .header-actions {
+    gap: 6px;
+  }
+}

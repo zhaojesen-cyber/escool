@@ -1,17 +1,25 @@
+@import "./brand.css";
+
 :root {
-  --ink: #192c3d;
-  --muted: #617180;
-  --line: #dfe5ea;
+  --brand-blue: #1d5c95;
+  --ice-white: #f6fafd;
+  --ice-blue: #e6f3fa;
+  --steel-ink: #17354b;
+  --steel-muted: #586e80;
+  --ink: var(--steel-ink);
+  --muted: var(--steel-muted);
+  --line: #dce7ef;
   --paper: #fff;
   --white: #fff;
-  --mint: #edf2f6;
-  --mint2: #f6f8fa;
-  --green: #225d98;
-  --accent: #dceaf6;
-  --dark: #193653;
+  --mint: #eef6fb;
+  --mint2: var(--ice-white);
+  --green: var(--brand-blue);
+  --accent: var(--ice-blue);
+  --dark: #183b56;
   --warning: #9d661e;
   --radius: 12px;
   --shadow: 0 12px 36px #1936530a;
+  color-scheme: light;
 }
 * {
   box-sizing: border-box;
