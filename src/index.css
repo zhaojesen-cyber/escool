@@ -3828,7 +3828,9 @@ textarea:focus-visible {
 .rating-score .rating-stars {
   color: #ce941b;
   letter-spacing: 2px;
-  margin-left: auto;
+  margin-left: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .rating-card .btn {
   white-space: normal;
