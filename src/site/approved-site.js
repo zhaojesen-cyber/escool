@@ -52,7 +52,7 @@ const SOCIAL_LINKS = [
 ];
 const HERO_MODELS = ["es12b", "es48b", "es200f"];
 const CONTACT = {
-  sales: "6285210032851",
+  sales: "6285281008881",
   director: "62812806661",
   email: "nianze1010@gmail.com",
   address:
@@ -401,7 +401,7 @@ function header() {
   return { topbar, header };
 }
 function footer() {
-  return `<footer class="footer"><div class="wrap"><div class="footer-top"><div>${logo()}<p class="footer-desc">${T("从家庭日常用冰到门店集中供冰，提供制冰设备、采购咨询与使用支持。", "Ice makers, purchasing advice and product support for homes, businesses and central ice supply.", "Mesin es, konsultasi pembelian, dan dukungan penggunaan untuk rumah, usaha, serta suplai es terpusat.")}</p><p class="note mt16">PT ESCOOL ELECTRONIC INDONESIA</p></div><div><h4>${T("产品与方案", "Products & solutions", "Produk & solusi")}</h4><div class="footer-links">${link("products", T("全部产品", "All products", "Semua produk"))}${link("solutions", T("产品选型", "Product selection", "Pemilihan produk"))}${link("partners", T("批量采购与 OEM", "Bulk purchasing & OEM", "Grosir & OEM"))}</div></div><div><h4>${T("服务与资料", "Support & resources", "Dukungan & informasi")}</h4><div class="footer-links">${link("about", T("关于 SOOCOOL", "About SOOCOOL", "Tentang SOOCOOL"))}${link("support", T("安装与售后", "Installation & service", "Pemasangan & purnajual"))}${link("resources", T("目录与使用指南", "Catalogue & guides", "Katalog & panduan"))}</div></div><div><h4>${T("联系我们", "Contact us", "Hubungi kami")}</h4><div class="footer-links"><button data-action="wa">WhatsApp +62 852-1003-2851</button><a href="mailto:${CONTACT.email}">${CONTACT.email}</a>${link("contact", T("联系与来访", "Contacts & visits", "Kontak & kunjungan"))}${STORE_LINKS.map((item) => externalLink(item, "footer-store")).join("")}</div></div><div class="footer-social"><h4>${T("关注我们", "Follow us", "Ikuti kami")}</h4><div class="social-links">${SOCIAL_LINKS.map((item) => externalLink(item, "social-link")).join("")}</div></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} SOOCOOL · ${T("保留所有权利", "All rights reserved", "Hak cipta dilindungi")}</span><div><button data-action="legal" data-value="privacy">${T("隐私说明", "Privacy notice", "Privasi")}</button><button data-action="legal" data-value="terms">${T("使用条款", "Terms of use", "Ketentuan")}</button></div></div></div></footer>`;
+  return `<footer class="footer"><div class="wrap"><div class="footer-top"><div>${logo()}<p class="footer-desc">${T("从家庭日常用冰到门店集中供冰，提供制冰设备、采购咨询与使用支持。", "Ice makers, purchasing advice and product support for homes, businesses and central ice supply.", "Mesin es, konsultasi pembelian, dan dukungan penggunaan untuk rumah, usaha, serta suplai es terpusat.")}</p><p class="note mt16">PT ESCOOL ELECTRONIC INDONESIA</p></div><div><h4>${T("产品与方案", "Products & solutions", "Produk & solusi")}</h4><div class="footer-links">${link("products", T("全部产品", "All products", "Semua produk"))}${link("solutions", T("产品选型", "Product selection", "Pemilihan produk"))}${link("partners", T("批量采购与 OEM", "Bulk purchasing & OEM", "Grosir & OEM"))}</div></div><div><h4>${T("服务与资料", "Support & resources", "Dukungan & informasi")}</h4><div class="footer-links">${link("about", T("关于 SOOCOOL", "About SOOCOOL", "Tentang SOOCOOL"))}${link("support", T("安装与售后", "Installation & service", "Pemasangan & purnajual"))}${link("resources", T("目录与使用指南", "Catalogue & guides", "Katalog & panduan"))}</div></div><div><h4>${T("联系我们", "Contact us", "Hubungi kami")}</h4><div class="footer-links"><button data-action="wa">WhatsApp 0852-8100-8881</button><a href="mailto:${CONTACT.email}">${CONTACT.email}</a>${link("contact", T("联系与来访", "Contacts & visits", "Kontak & kunjungan"))}${STORE_LINKS.map((item) => externalLink(item, "footer-store")).join("")}</div></div><div class="footer-social"><h4>${T("关注我们", "Follow us", "Ikuti kami")}</h4><div class="social-links">${SOCIAL_LINKS.map((item) => externalLink(item, "social-link")).join("")}</div></div></div><div class="footer-bottom"><span>© ${new Date().getFullYear()} SOOCOOL · ${T("保留所有权利", "All rights reserved", "Hak cipta dilindungi")}</span><div><button data-action="legal" data-value="privacy">${T("隐私说明", "Privacy notice", "Privasi")}</button><button data-action="legal" data-value="terms">${T("使用条款", "Terms of use", "Ketentuan")}</button></div></div></div></footer>`;
 }
 function utilities() {
   return `<button class="floating-contact" data-action="wa" aria-label="${T("WhatsApp 咨询", "WhatsApp enquiry", "Konsultasi WhatsApp")}">${I("whatsapp")}</button>${state.compare.length ? `<div class="compare-dock"><span class="dock-title">${T("产品对比", "Compare", "Bandingkan")} · ${state.compare.length}/3</span><div class="dock-products">${state.compare.map((id) => `<span class="dock-chip">${find(id).code}<button data-action="compare" data-value="${id}" aria-label="${T("移除", "Remove", "Hapus")} ${find(id).code}">×</button></span>`).join("")}</div>${btn(T("开始对比", "Compare now", "Bandingkan"), "open-compare", "", "lime small", "compare", state.compare.length < 2 ? "disabled" : "")}</div>` : ""}`;
@@ -928,7 +928,7 @@ function guideText(id) {
   return (
     `SOOCOOL · ${t(g.title)}\n\n${t(g.intro)}\n\n` +
     g.sections.map((s, i) => `${i + 1}. ${t(s.h)}\n${t(s.p)}`).join("\n\n") +
-    `\n\nWhatsApp: +62 852-1003-2851\nEmail: ${CONTACT.email}\n`
+    `\n\nWhatsApp: 0852-8100-8881\nEmail: ${CONTACT.email}\n`
   );
 }
 function downloadCatalogue() {
@@ -948,11 +948,11 @@ function productText(p) {
     specs(p)
       .map(([k, v]) => `${k}: ${v}`)
       .join("\n") +
-    `\n\n${productionNote()}\n\n${T("报价与采购咨询", "Quotation enquiries", "Permintaan penawaran")}: WhatsApp +62 852-1003-2851\n`
+    `\n\n${productionNote()}\n\n${T("报价与采购咨询", "Quotation enquiries", "Permintaan penawaran")}: WhatsApp 0852-8100-8881\n`
   );
 }
 function catalogueHTML() {
-  return `<!doctype html><html lang="${lang === "zh" ? "zh-CN" : lang}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SOOCOOL ${T("产品目录", "Catalogue", "Katalog")}</title><style>body{font:15px Arial,sans-serif;color:#163451;max-width:1000px;margin:40px auto;padding:0 24px;line-height:1.8}h1{color:#1766cf}article{break-inside:avoid;border-top:1px solid #cbdceb;padding:24px 0}table{border-collapse:collapse;width:100%}th,td{padding:7px 12px;border:1px solid #dce5ef;text-align:left;white-space:pre-line}th{width:35%;background:#f1f7ff}@media print{body{margin:0}article{page-break-inside:avoid}}</style><h1>SOOCOOL · ${T("制冰设备产品目录", "Ice maker catalogue", "Katalog mesin es")}</h1><p>${esc(productionNote())}</p><p>WhatsApp +62 852-1003-2851 · ${CONTACT.email}</p>${PRODUCTS.map(
+  return `<!doctype html><html lang="${lang === "zh" ? "zh-CN" : lang}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SOOCOOL ${T("产品目录", "Catalogue", "Katalog")}</title><style>body{font:15px Arial,sans-serif;color:#163451;max-width:1000px;margin:40px auto;padding:0 24px;line-height:1.8}h1{color:#1766cf}article{break-inside:avoid;border-top:1px solid #cbdceb;padding:24px 0}table{border-collapse:collapse;width:100%}th,td{padding:7px 12px;border:1px solid #dce5ef;text-align:left;white-space:pre-line}th{width:35%;background:#f1f7ff}@media print{body{margin:0}article{page-break-inside:avoid}}</style><h1>SOOCOOL · ${T("制冰设备产品目录", "Ice maker catalogue", "Katalog mesin es")}</h1><p>${esc(productionNote())}</p><p>WhatsApp 0852-8100-8881 · ${CONTACT.email}</p>${PRODUCTS.map(
     (p) =>
       `<article><h2>${p.code} · ${productTitle(p)}</h2>${p.sharedPhoto ? `<p style="font-size:12px;color:#66809b">${T("产品图展示同系列外观。", "Image shows the series appearance.", "Gambar menunjukkan tampilan seri.")}</p>` : ""}<img src="${esc(p.image)}" alt="${p.code}" style="width:160px;height:200px;object-fit:contain;float:right;margin:0 0 15px 20px"><p>${esc(productDesc(p))}</p><table>${specs(
         p,

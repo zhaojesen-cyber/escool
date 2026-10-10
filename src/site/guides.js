@@ -255,9 +255,9 @@ export const GUIDES = {
       {
         h: ["联系团队", "Contact the team", "Hubungi tim"],
         p: [
-          "选型与售后咨询：WhatsApp +62 852-1003-2851。批量采购、经销与 OEM：Louis / 吴飞，WhatsApp +62 812-806-661，邮箱 nianze1010@gmail.com。来访前请预约。",
-          "Product and service enquiries: WhatsApp +62 852-1003-2851. Bulk purchasing, distribution and OEM: Louis / Wu Fei, WhatsApp +62 812-806-661, email nianze1010@gmail.com. Please arrange an appointment before visiting.",
-          "Pemilihan produk dan purnajual: WhatsApp +62 852-1003-2851. Grosir, distribusi, dan OEM: Louis / Wu Fei, WhatsApp +62 812-806-661, email nianze1010@gmail.com. Buat janji sebelum berkunjung.",
+          "选型与售后咨询：WhatsApp 0852-8100-8881。批量采购、经销与 OEM：Louis / 吴飞，WhatsApp +62 812-806-661，邮箱 nianze1010@gmail.com。来访前请预约。",
+          "Product and service enquiries: WhatsApp 0852-8100-8881. Bulk purchasing, distribution and OEM: Louis / Wu Fei, WhatsApp +62 812-806-661, email nianze1010@gmail.com. Please arrange an appointment before visiting.",
+          "Pemilihan produk dan purnajual: WhatsApp 0852-8100-8881. Grosir, distribusi, dan OEM: Louis / Wu Fei, WhatsApp +62 812-806-661, email nianze1010@gmail.com. Buat janji sebelum berkunjung.",
         ],
       },
     ],

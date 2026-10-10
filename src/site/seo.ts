@@ -96,7 +96,7 @@ export function getStructuredData(
     name: "SOOCOOL",
     legalName: "PT ESCOOL ELECTRONIC INDONESIA",
     url: siteUrl,
-    telephone: "+62-852-1003-2851",
+    telephone: "+62-852-8100-8881",
     email: "nianze1010@gmail.com",
     sameAs: [
       "https://shopee.co.id/soocool.mall",
