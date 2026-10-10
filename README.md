@@ -34,7 +34,7 @@ After updating products, also update the three catalogues in `public/documents/`
 
 ## Enquiries and privacy
 
-Forms validate name, location, email/international phone, requirements and consent. They open an editable WhatsApp/email message for the visitor to confirm and send. No enquiries or orders are saved by this site, and there is no simulated submission success. Locale preference is local browser storage; selected comparison model IDs are kept in session storage for cross-page comparison. There is no database or secret required to render the website. Platform access credentials belong in the hosting platform, never this repository.
+Forms validate name, location, email/international phone, requirements and consent. They open an editable WhatsApp/email message for the visitor to confirm and send. No enquiries or orders are saved by this site, and there is no simulated submission success. The root URL always opens in Indonesian, including after previous language choices; English and Chinese have explicit paths. Selected comparison model IDs are kept in session storage for cross-page comparison. There is no database or secret required to render the website. Platform access credentials belong in the hosting platform, never this repository.
 
 ## Cloudflare deployment
 
