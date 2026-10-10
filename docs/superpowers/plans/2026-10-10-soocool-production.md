@@ -39,8 +39,8 @@ Replace scripts/generate-static.tsx and src/site/seo.ts; add tests/production.te
 - [x] Generate all pages, sitemap, robots, security/cache headers and compatibility redirects.
 - [x] Run npm test, npm run lint, npm run typecheck and npm run build.
 - [x] Review source and create a local commit of the verified implementation.
-- [ ] Push the reviewed commits after verifying repository write access.
-- [ ] Connect Cloudflare to the repository, deploy and verify the live domain and certificate.
+- [x] Push the reviewed commits after verifying repository write access.
+- [x] Verify the existing Cloudflare Git integration, correct its build command, deploy and verify the live domain and certificate.
 
 ## Verification and access status — 2026-10-10
 
@@ -48,4 +48,6 @@ Replace scripts/generate-static.tsx and src/site/seo.ts; add tests/production.te
 - Desktop/mobile views in all three languages, quotation validation, cross-page scenario choices and model comparison were browser-verified.
 - Cloudflare local runtime verifies response headers, legacy redirects and a real 404; Docker is not installed locally and its image has not been run.
 - Code review identified lost cross-page selections; query parameters and validated session storage now preserve them, and focused re-review passed.
-- GitHub push and production deployment remain pending actual write access and login to the user-specified hosting account. These have not been completed.
+- GitHub repository access was verified as ADMIN, PR #1 was reviewed, checked and merged as `830a7d9`.
+- The existing Cloudflare `escool` Worker already had Git integration. Its old `pnpm run build` command was changed to `npm run check`; deployment `9b82d89b-4552-4cab-bb43-92fd6d17213f` succeeded.
+- Live HTTPS checks passed for all 81 sitemap pages, 20 referenced assets/downloads, security headers, the legacy 301 redirect and a real 404. The Chinese homepage was also inspected in the browser.

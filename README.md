@@ -38,7 +38,7 @@ Forms validate name, location, email/international phone, requirements and conse
 
 ## Cloudflare deployment
 
-Preserve the actual existing Cloudflare project and its `escool.id` custom domain. Git integration settings:
+The live site uses the existing Cloudflare `escool` Worker, with `escool.id` and the existing GitHub integration preserved. On 2026-10-10 its build command was updated and the approved redesign was deployed and verified. Git integration settings:
 
 - Repository: `zhaojesen-cyber/escool`
 - Production branch: `master`
@@ -47,7 +47,7 @@ Preserve the actual existing Cloudflare project and its `escool.id` custom domai
 - Output: `dist`
 - Build environment: `NODE_VERSION=22`, `SITE_URL=https://escool.id`
 
-For Workers Builds, use the existing `escool` Worker and deployment command `npx wrangler deploy`; `wrangler.jsonc` serves the generated static assets. For Pages, use the `dist` output and do not create a second project or change the live domain until its preview passes. Hosting-side Git connection configuration cannot be committed as a substitute for actually configuring the platform.
+Workers Builds uses deployment command `npx wrangler deploy`; `wrangler.jsonc` serves the generated static assets. Node 22 is selected by `.nvmrc`. `SITE_URL` defaults to `https://escool.id` when no build environment override is configured. Every push to `master` triggers a build and deployment; keep the build command as `npm run check` so failed verification prevents publishing. Hosting-side Git connection configuration is managed in Cloudflare, separately from this repository.
 
 GitHub Actions `.github/workflows/ci.yml` verifies changes on master and pull requests and retains a build artifact. A failed check stops the Cloudflare build when its build command is `npm run check`.
 
