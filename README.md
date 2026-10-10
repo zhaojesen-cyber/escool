@@ -20,6 +20,7 @@ npm run preview
 - `src/catalogue/products.json`: validated public models and specifications; prices are not published. Some original source photos are shared by the same series and the pages label them accordingly.
 - `src/site/pages/`: approved page templates by page. Templates consume explicit locale-aware helpers; static generation and client rendering share them.
 - `src/site/approved-site.js`: shared layout, product UI, localized content helpers, modal forms and scoped browser event lifecycle.
+- `src/site/browser-state.ts`: validated cross-page category/scenario choices and session-scoped comparison selection.
 - `src/site/ice-scene.js`: proportional particle ice cubes, pointer follow, reduced-motion support and observer cleanup.
 - `src/site/guides.js`: complete Chinese, English and Indonesian practical guides.
 - `src/site/routes.ts`, `seo.ts`: typed routes and metadata/structured data.
@@ -33,7 +34,7 @@ After updating products, also update the three catalogues in `public/documents/`
 
 ## Enquiries and privacy
 
-Forms validate name, location, email/international phone, requirements and consent. They open an editable WhatsApp/email message for the visitor to confirm and send. No enquiries or orders are saved by this site, and there is no simulated submission success. Locale preference is local browser storage. There is no database or secret required to render the website. Platform access credentials belong in the hosting platform, never this repository.
+Forms validate name, location, email/international phone, requirements and consent. They open an editable WhatsApp/email message for the visitor to confirm and send. No enquiries or orders are saved by this site, and there is no simulated submission success. Locale preference is local browser storage; selected comparison model IDs are kept in session storage for cross-page comparison. There is no database or secret required to render the website. Platform access credentials belong in the hosting platform, never this repository.
 
 ## Cloudflare deployment
 

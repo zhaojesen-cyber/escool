@@ -1,3 +1,4 @@
+import { readEntryState, saveCompare, getChoicePath } from "./browser-state";
 import * as pageTemplates from "./pages/index.js";
 import { products as PRODUCTS, getPagePath } from "./routes";
 import { GUIDES } from "./guides.js";
@@ -573,7 +574,7 @@ const BUYER_RATINGS = [
   },
 ];
 function buyerFeedback() {
-  return `<section class="section buyer-feedback">${sectionHead("BUYER FEEDBACK", T("买过的人，怎么评价？", "What do buyers think?", "Bagaimana penilaian pembeli?"), T("看看 Shopee 买家评分，也可以到商品页阅读使用反馈。", "Check Shopee buyer ratings and read feedback on the product pages.", "Lihat penilaian pembeli Shopee dan baca ulasan di halaman produk."))}<div class="cards three">${BUYER_RATINGS.map((r) => `<article class="rating-card"><div class="rating-source">${socialIcon("shopee")} ${t(r.detail)}</div><h3>${t(r.label)}</h3><div class="rating-score" aria-label="${r.rating} ${T("分，满分5分", "out of 5", "dari 5")}"><strong>${r.rating}</strong><span>/ 5</span><span class="rating-stars" style="--rating-fill:${Number(r.rating) * 20}%" aria-hidden="true">★★★★★</span></div><a class="btn text" href="${r.url}" target="_blank" rel="noopener noreferrer">${T("到 Shopee 查看评价", "View feedback on Shopee", "Lihat ulasan di Shopee")}${I("arrow")}</a></article>`).join("")}</div></section>`;
+  return `<section class="section buyer-feedback" id="testimonials">${sectionHead("BUYER FEEDBACK", T("买过的人，怎么评价？", "What do buyers think?", "Bagaimana penilaian pembeli?"), T("看看 Shopee 买家评分，也可以到商品页阅读使用反馈。", "Check Shopee buyer ratings and read feedback on the product pages.", "Lihat penilaian pembeli Shopee dan baca ulasan di halaman produk."))}<div class="cards three">${BUYER_RATINGS.map((r) => `<article class="rating-card"><div class="rating-source">${socialIcon("shopee")} ${t(r.detail)}</div><h3>${t(r.label)}</h3><div class="rating-score" aria-label="${r.rating} ${T("分，满分5分", "out of 5", "dari 5")}"><strong>${r.rating}</strong><span>/ 5</span><span class="rating-stars" style="--rating-fill:${Number(r.rating) * 20}%" aria-hidden="true">★★★★★</span></div><a class="btn text" href="${r.url}" target="_blank" rel="noopener noreferrer">${T("到 Shopee 查看评价", "View feedback on Shopee", "Lihat ulasan di Shopee")}${I("arrow")}</a></article>`).join("")}</div></section>`;
 }
 function iceSceneMarkup(extraClass = "") {
   return `<div class="ice-scene ${extraClass}"><div class="ice-scene-art" role="img" aria-label="${T("三个冷蓝色立体粒子冰块", "Three blue three-dimensional particle ice cubes", "Tiga es batu partikel biru tiga dimensi")}"><canvas class="ice-scene-canvas" aria-hidden="true"></canvas><svg class="ice-scene-fallback" viewBox="0 0 460 400" aria-hidden="true"><defs><pattern id="ice-dot-pattern" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.1" fill="#3489eb"/></pattern></defs><g fill="url(#ice-dot-pattern)" stroke="#63b5f4" stroke-width="1.5"><path d="m80 68 51-28 50 29v58l-50 28-51-28Zm0 0 51 29 50-28m-50 28v58"/><path d="m181 189 76-42 74 43v86l-74 43-76-43Zm0 0 76 43 74-42m-74 42v86"/><path d="m330 65 43-24 43 25v50l-43 25-43-25Zm0 0 43 25 43-24m-43 24v51"/></g></svg></div><div class="ice-scene-wordmark"><span>SOOCOOL</span><strong>GOOD ICE.<br>EVERY DAY.</strong></div><button class="ice-motion-toggle" data-play="${T("播放冰块动画", "Play ice animation", "Putar animasi es")}" data-pause="${T("暂停冰块动画", "Pause ice animation", "Jeda animasi es")}" aria-label="${T("暂停冰块动画", "Pause ice animation", "Jeda animasi es")}" aria-pressed="false">Ⅱ</button></div>`;
@@ -721,7 +722,7 @@ function contactPage() {
 }
 function legal(type) {
   return type === "privacy"
-    ? `<div class="legal-text"><h3>${T("咨询信息", "Enquiry details", "Informasi permintaan")}</h3><p>${T("你填写的姓名、城市、联系方式和需求用于本次咨询。填写时信息保留在当前页面，网站不自动上传表单。你选择 WhatsApp 或邮件并确认发送后，信息通过所选渠道发送给联系团队。", "Your name, city, contact and requirements are used for this enquiry. Entries remain in the current page; this website does not automatically upload the form. After you choose WhatsApp or email and confirm sending, the details are sent through that channel to the contact team.", "Nama, kota, kontak, serta kebutuhan digunakan untuk permintaan ini. Isian tetap berada pada halaman ini; situs tidak mengunggah formulir secara otomatis. Setelah memilih WhatsApp atau email dan mengonfirmasi pengiriman, informasi dikirim melalui kanal tersebut kepada tim.")}</p><h3>${T("语言偏好与第三方渠道", "Language preference and external services", "Preferensi bahasa dan layanan eksternal")}</h3><p>${T("网站在浏览器中保存语言偏好，便于下次访问使用同一语言。WhatsApp、邮件和电商平台按各自隐私规则处理信息。请勿在咨询中填写支付密码或其他敏感凭据。", "The website stores your language preference in the browser for future visits. WhatsApp, email and e-commerce platforms handle data under their own privacy rules. Do not include payment passwords or other sensitive credentials in enquiries.", "Situs menyimpan preferensi bahasa di browser untuk kunjungan berikutnya. WhatsApp, email, serta platform e-commerce menangani data sesuai aturan privasi masing-masing. Jangan memasukkan kata sandi pembayaran atau kredensial sensitif.")}</p><h3>${T("联系", "Contact", "Kontak")}</h3><p>${T("关于已发送咨询信息的更正、删除或隐私问题，请联系：", "For corrections, deletion or privacy questions about sent enquiries, contact:", "Untuk koreksi, penghapusan, atau pertanyaan privasi terkait permintaan yang telah dikirim, hubungi:")} ${CONTACT.email}</p></div>`
+    ? `<div class="legal-text"><h3>${T("咨询信息", "Enquiry details", "Informasi permintaan")}</h3><p>${T("你填写的姓名、城市、联系方式和需求用于本次咨询。填写时信息保留在当前页面，网站不自动上传表单。你选择 WhatsApp 或邮件并确认发送后，信息通过所选渠道发送给联系团队。", "Your name, city, contact and requirements are used for this enquiry. Entries remain in the current page; this website does not automatically upload the form. After you choose WhatsApp or email and confirm sending, the details are sent through that channel to the contact team.", "Nama, kota, kontak, serta kebutuhan digunakan untuk permintaan ini. Isian tetap berada pada halaman ini; situs tidak mengunggah formulir secara otomatis. Setelah memilih WhatsApp atau email dan mengonfirmasi pengiriman, informasi dikirim melalui kanal tersebut kepada tim.")}</p><h3>${T("语言偏好与第三方渠道", "Language preference and external services", "Preferensi bahasa dan layanan eksternal")}</h3><p>${T("网站在浏览器中保存语言偏好，便于下次访问使用同一语言。已选的对比型号保留到本次浏览结束。WhatsApp、邮件和电商平台按各自隐私规则处理信息。请勿在咨询中填写支付密码或其他敏感凭据。", "The website stores your language preference in the browser for future visits. Selected comparison models remain for this browsing session. WhatsApp, email and e-commerce platforms handle data under their own privacy rules. Do not include payment passwords or other sensitive credentials in enquiries.", "Situs menyimpan preferensi bahasa di browser untuk kunjungan berikutnya. Model pembanding tersimpan selama sesi penjelajahan ini. WhatsApp, email, serta platform e-commerce menangani data sesuai aturan privasi masing-masing. Jangan memasukkan kata sandi pembayaran atau kredensial sensitif.")}</p><h3>${T("联系", "Contact", "Kontak")}</h3><p>${T("关于已发送咨询信息的更正、删除或隐私问题，请联系：", "For corrections, deletion or privacy questions about sent enquiries, contact:", "Untuk koreksi, penghapusan, atau pertanyaan privasi terkait permintaan yang telah dikirim, hubungi:")} ${CONTACT.email}</p></div>`
     : `<div class="legal-text"><h3>${T("产品与交易", "Products and orders", "Produk dan pesanan")}</h3><p>${T("网站用于产品了解、选型和业务咨询。产冰量受环境、进水与安装条件影响；设备配置按对应型号、铭牌及随箱资料核对。价格、库存、税费、运费、交货和保修以实际订单、销售渠道及书面约定为准。", "This website provides product information, selection tools and business enquiries. Production depends on ambient, water and installation conditions. Check configuration against the exact model, nameplate and supplied documents. Pricing, stock, taxes, freight, delivery and warranty follow the order, sales channel and written agreement.", "Situs menyediakan informasi produk, alat pemilihan, dan permintaan bisnis. Produksi bergantung pada udara, air, serta pemasangan. Periksa konfigurasi sesuai model, pelat nama, dan dokumen. Harga, stok, pajak, ongkir, pengiriman, serta garansi mengikuti pesanan, kanal penjualan, dan perjanjian tertulis.")}</p><h3>${T("工具与资料", "Tools and documents", "Alat dan dokumen")}</h3><p>${T("用冰计算器根据访客输入估算饮品用冰量，不代替现场评估。指南用于采购和日常准备，具体安装、清洁及操作以对应设备说明书为准。", "The calculator estimates beverage demand from visitor inputs and does not replace a site assessment. Guides help with purchasing and preparation; use the exact machine manual for installation, cleaning and operation.", "Kalkulator memperkirakan kebutuhan minuman dari masukan pengunjung dan tidak menggantikan penilaian lokasi. Panduan membantu pembelian serta persiapan; gunakan manual mesin untuk pemasangan, pembersihan, dan operasi.")}</p><h3>${T("内容使用", "Content use", "Penggunaan konten")}</h3><p>${T("品牌标识、产品图片与资料属于相应权利人。商业转载或再发布请事先联系获得许可。", "Brand marks, product photographs and documents belong to their respective rights holders. Contact us for permission before commercial reuse or republication.", "Merek, foto produk, serta dokumen adalah milik pemegang hak masing-masing. Hubungi kami untuk izin sebelum penggunaan komersial atau publikasi ulang.")}</p></div>`;
 }
 function waURL(text = "", director = false) {
@@ -1023,30 +1024,26 @@ function render(preserve = false) {
   $("#footer").innerHTML = footer();
   $("#utility").innerHTML = utilities();
   document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
-  const name = t(
-    NAV.find((n) => n[0] === route.page)?.[1] || [
-      "联系我们",
-      "Contact",
-      "Kontak",
-    ],
-  );
-  document.title =
-    "SOOCOOL · " +
-    (route.page === "product" ? find(route.id)?.code || "404" : name) +
-    " | " +
-    T("制冰设备", "Ice makers", "Mesin es");
-  document.querySelector('meta[name="description"]').content = T(
-    "SOOCOOL 家用、台式、商用与分体式制冰设备。查看型号、产能、储冰量与安装要求，联系印尼团队咨询报价。",
-    "SOOCOOL countertop, commercial and modular ice makers. Explore models, production, storage and installation, and contact the Indonesia team for quotations.",
-    "Mesin es meja, komersial, dan modular SOOCOOL. Lihat model, produksi, penyimpanan, serta pemasangan dan hubungi tim Indonesia untuk penawaran.",
-  );
   window.scrollTo({ top: preserve ? y : 0, behavior: "instant" });
   startHeroCarousel();
   if (typeof mountIceScene === "function")
     stopIceScene = mountIceScene($(".ice-scene"));
 }
 function go(page, id = "") {
-  location.assign(path(page, id));
+  location.assign(
+    page === "products"
+      ? getChoicePath(lang, page, state.category)
+      : page === "solutions"
+        ? getChoicePath(lang, page, state.scenario)
+        : path(page, id),
+  );
+}
+function compareStorage() {
+  try {
+    return sessionStorage;
+  } catch {
+    return null;
+  }
 }
 
 function pageContext() {
@@ -1112,6 +1109,7 @@ export function renderMarkup(context) {
   return `<a class="skip" href="#main" id="skip-link">${T("跳转到正文", "Skip to content", "Lewati ke konten")}</a><div id="topbar">${chrome.topbar}</div><header class="site-header" id="header">${chrome.header}</header><main id="main" tabindex="-1">${(pages[route.page] || notFound)()}</main><div id="footer">${footer()}</div><div id="utility">${utilities()}</div><div id="modal-root"></div><div id="toast-root" aria-live="polite"></div>`;
 }
 export function mountSite(context) {
+  Object.assign(state, readEntryState(location.search, compareStorage()));
   lang = context.locale;
   route = { page: context.page, id: context.id };
   const abort = new AbortController();
@@ -1187,6 +1185,7 @@ export function mountSite(context) {
           );
           break;
         }
+        saveCompare(compareStorage(), state.compare);
         render(true);
         break;
       }
@@ -1345,7 +1344,7 @@ export function mountSite(context) {
       try {
         localStorage.setItem("soocool-language", lang);
       } catch {}
-      location.assign(path(route.page, route.id));
+      go(route.page, route.id);
     }
   });
   listen(document, "submit", (e) => {
@@ -1451,8 +1450,7 @@ export function mountSite(context) {
     $("#main").scrollIntoView();
   });
 
-  startHeroCarousel();
-  stopIceScene = mountIceScene($(".ice-scene"));
+  render(true);
   return () => {
     abort.abort();
     stopHero();
