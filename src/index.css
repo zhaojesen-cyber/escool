@@ -3113,7 +3113,7 @@ small {
 }
 .btn.primary:hover {
   background: #194b7d;
-  box-shadow: 0 6px 14px var(--green) 22;
+  box-shadow: none;
 }
 .btn.secondary {
   border-color: #a9bed7;
