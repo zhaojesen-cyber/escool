@@ -1,4 +1,4 @@
-import { products, locales, getPagePath, type Locale } from "./routes";
+import { products, getPagePath, type Locale } from "./routes";
 type StorageLike = Pick<Storage, "getItem" | "setItem">;
 const categories = ["all", "compact", "commercial", "industrial", "specialty"];
 const scenarios = ["cafe", "hotel", "chain", "home"];
@@ -53,12 +53,4 @@ export function getChoicePath(
     "?" +
     new URLSearchParams({ [key]: allowed.includes(value) ? value : allowed[0] })
   );
-}
-export function getSavedLocale(storage?: StorageLike | null): Locale | null {
-  try {
-    const value = storage?.getItem("soocool-language");
-    return locales.includes(value as Locale) ? (value as Locale) : null;
-  } catch {
-    return null;
-  }
 }

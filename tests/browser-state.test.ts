@@ -4,7 +4,6 @@ import {
   readEntryState,
   saveCompare,
   getChoicePath,
-  getSavedLocale,
 } from "../src/site/browser-state.ts";
 import { getPageFromPath } from "../src/site/routes.ts";
 const store = (initial: string | null = null) => {
@@ -63,10 +62,4 @@ test("selections survive product-page navigation and reject untrusted IDs", () =
   };
   assert.deepEqual(readEntryState("", blocked).compare, []);
   assert.doesNotThrow(() => saveCompare(blocked, ["es12b"]));
-});
-test("saved language only accepts supported explicit preferences", () => {
-  assert.equal(getSavedLocale(store("zh")), "zh");
-  assert.equal(getSavedLocale(store("en")), "en");
-  assert.equal(getSavedLocale(store("id")), "id");
-  assert.equal(getSavedLocale(store("fake")), null);
 });
