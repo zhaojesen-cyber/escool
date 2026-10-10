@@ -32,3 +32,6 @@ dist-ssr
 # Cloudflare
 .wrangler
 .dev.vars
+
+# Local screenshots and QA artifacts
+output/

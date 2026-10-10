@@ -1,362 +1,164 @@
 import {
-  dictionaries,
-  locales,
-  type Locale,
-  type Product,
-  type SitePageContext,
-  getCategoryCopy,
-  getHomePath,
   getPagePath,
-  getProductBySlug,
-  getProductPath,
+  getLocalizedPagePath,
+  locales,
   products,
-  getUseCaseFragment,
-} from './content'
-
-function trimTrailingSlash(value: string): string {
-  return value.replace(/\/+$/, '')
+  type Locale,
+  type SitePageContext,
+} from "./routes";
+const names: Record<string, Record<Locale, string>> = {
+  home: {
+    zh: "家用与商用制冰设备",
+    en: "Home & commercial ice makers",
+    id: "Mesin es rumah & komersial",
+  },
+  products: { zh: "产品中心", en: "Ice makers", id: "Produk mesin es" },
+  solutions: {
+    zh: "选型与用冰方案",
+    en: "Ice supply & model selection",
+    id: "Solusi & pemilihan mesin",
+  },
+  partners: {
+    zh: "采购与品牌合作",
+    en: "Purchasing & OEM partnerships",
+    id: "Pembelian & kemitraan OEM",
+  },
+  about: { zh: "关于 SOOCOOL", en: "About SOOCOOL", id: "Tentang SOOCOOL" },
+  support: {
+    zh: "安装与售后支持",
+    en: "Installation & product support",
+    id: "Pemasangan & purnajual",
+  },
+  resources: {
+    zh: "产品目录与使用指南",
+    en: "Catalogue & practical guides",
+    id: "Katalog & panduan penggunaan",
+  },
+  contact: {
+    zh: "联系印尼团队",
+    en: "Contact our Indonesia team",
+    id: "Hubungi tim Indonesia",
+  },
+  "404": {
+    zh: "页面未找到",
+    en: "Page not found",
+    id: "Halaman tidak ditemukan",
+  },
+};
+export function resolveSiteUrl(
+  value = process.env.SITE_URL || "https://escool.id",
+): string {
+  const url = new URL(value);
+  if (
+    url.protocol !== "https:" ||
+    url.username ||
+    url.password ||
+    url.pathname !== "/" ||
+    url.search ||
+    url.hash
+  )
+    throw new Error("SITE_URL must be an HTTPS origin");
+  return url.origin;
 }
-
-export function resolveSiteUrl(): string {
-  return trimTrailingSlash(process.env.SITE_URL ?? process.env.VITE_SITE_URL ?? 'https://escool.id')
-}
-
-function buildAbsoluteUrl(siteUrl: string, path: string): string {
-  return `${trimTrailingSlash(siteUrl)}${path}`
-}
-
-function getHomeSeo(locale: Locale) {
-  const seo = {
-    zh: {
-      title: 'Escool (Soocool) - 优质制冰机品牌 | 专业制冰机制造商',
-      description:
-        'Escool (Soocool) 提供家用与商用制冰机、安装维护支持和工厂直供服务，帮助印尼企业找到合适的制冰解决方案。',
-      keywords:
-        '制冰机,商用制冰机,家用制冰机,印尼制冰机,Jakarta 制冰机,Soocool,Escool,escool.id,制冰设备,制冰机厂家',
-    },
-    id: {
-      title: 'Escool (Soocool) - Mesin Es Batu, Mesin Es Kristal, Mesin Es Cube & Ice Maker Portable',
-      description:
-        'Escool (Soocool) menyediakan mesin es batu, mesin es kristal, mesin es cube, serta ice maker portable kapasitas 12kg dengan daya rendah untuk rumah, cafe, dan bisnis di Indonesia.',
-      keywords:
-        'mesin es batu,mesin es kristal,mesin es cube,ice maker kapasitas 12kg,mesin es daya rendah,mesin ice maker portable,mesin es Jakarta,Soocool,Escool,escool.id',
-    },
-    en: {
-      title: 'Escool (Soocool) - Premium Ice Machines | Commercial and Home Ice Machine Manufacturer',
-      description:
-        'Escool (Soocool) supplies home and commercial ice machines with factory-direct production, local support in Jakarta, and dependable after-sales service.',
-      keywords:
-        'ice machine,commercial ice machine,home ice maker,ice machine Indonesia,ice machine Jakarta,Soocool,Escool,escool.id,ice machine supplier',
-    },
-  } as const
-
-  return seo[locale]
-}
-
-function getProductDescription(locale: Locale, product: Product): string {
-  const { card, details } = getCategoryCopy(locale, product.type)
-  const useCase = getUseCaseFragment(locale, details.description)
-
-  if (locale === 'id' && product.code === 'ES-12B') {
-    return 'ES-12B adalah mesin ice maker portable kapasitas 12kg dengan daya rendah dari Soocool, cocok sebagai mesin es batu rumahan, mesin es kristal, dan mesin es cube untuk kebutuhan harian.'
-  }
-
-  const templates = {
-    zh: `${product.code} 是 Soocool 的${card.name}，适合 ${details.description}，产冰量 ${product.capacity ?? '多规格可选'}，提供本地咨询与售后支持。`,
-    id: `${product.code} adalah ${card.name} dari Soocool, cocok untuk ${useCase}, dengan kapasitas ${product.capacity ?? 'beragam pilihan kapasitas'} dan dukungan lokal di Indonesia.`,
-    en: `${product.code} is a ${card.name.toLowerCase()} from Soocool, built for ${useCase} with ${product.capacity ?? 'multiple capacity options'} and local support in Indonesia.`,
-  } as const
-
-  return templates[locale]
-}
-
-function getProductKeywords(locale: Locale, product: Product): string {
-  const { card } = getCategoryCopy(locale, product.type)
-
-  if (locale === 'id' && product.code === 'ES-12B') {
-    return [
-      'ES-12B',
-      'Soocool',
-      'ice maker kapasitas 12kg',
-      'mesin es daya rendah',
-      'mesin ice maker portable',
-      'mesin es batu',
-      'mesin es kristal',
-      'mesin es cube',
-    ].join(',')
-  }
-
-  const values = {
-    zh: [product.code, 'Soocool', card.name, '制冰机', '商用制冰机', '家用制冰机'],
-    id: [product.code, 'Soocool', card.name, 'mesin es', 'mesin es komersial', 'mesin es Indonesia'],
-    en: [product.code, 'Soocool', card.name, 'ice machine', 'commercial ice machine', 'ice machine Indonesia'],
-  } as const
-
-  return values[locale].join(',')
-}
-
-function getFaqItems(locale: Locale) {
-  return dictionaries[locale].faq.items
-}
-
-function getOrganizationSchema(siteUrl: string, description: string) {
+export function getPageSeo(page: SitePageContext, siteUrl: string) {
+  const product = products.find((item) => item.id === page.id);
+  const label =
+    page.page === "product" && product
+      ? `${product.code} · ${{ zh: "制冰机", en: "Ice maker", id: "Mesin es" }[page.locale]}`
+      : names[page.page][page.locale];
+  const generic = {
+    zh: "SOOCOOL 家用、台式、商用与分体式制冰设备。查看型号、日产量、储冰量和安装要求，联系印尼团队咨询选型、采购与报价。",
+    en: "SOOCOOL countertop, commercial and modular ice makers. Explore models, daily production, storage and installation. Contact our Indonesia team for product selection and quotations.",
+    id: "Mesin es meja, komersial, dan modular SOOCOOL. Lihat model, produksi harian, penyimpanan, dan pemasangan. Hubungi tim Indonesia untuk pemilihan mesin serta penawaran.",
+  };
+  const description = product
+    ? `${product.code}: ${product.production} kg / 24h · ${product.storage} kg. ${generic[page.locale]}`
+    : `${label}. ${generic[page.locale]}`;
   return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Soocool',
-    alternateName: ['PT. Multi Citra Rejeki (MCR)', 'Escool', 'escool.id'],
-    url: siteUrl,
-    logo: `${siteUrl}/logo.png`,
-    image: `${siteUrl}/logo.png`,
+    title: `${label} | SOOCOOL (Escool)`,
     description,
-    telephone: '+62-852-1003-2851',
+    url: siteUrl + getPagePath(page),
+    image: siteUrl + (product?.image || "/assets/product-row-8.webp"),
+    alternates: locales.map((locale) => ({
+      locale,
+      href: siteUrl + getLocalizedPagePath(page, locale),
+    })),
+  };
+}
+export function getStructuredData(
+  page: SitePageContext,
+  siteUrl: string,
+): unknown[] {
+  const seo = getPageSeo(page, siteUrl);
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "SOOCOOL",
+    legalName: "PT ESCOOL ELECTRONIC INDONESIA",
+    url: siteUrl,
+    telephone: "+62-852-1003-2851",
+    email: "nianze1010@gmail.com",
     sameAs: [
-      'https://shopee.co.id/soocool.mall',
-      'https://www.tiktok.com/@soocool.indonesia',
-      'https://www.facebook.com/profile.php?id=61581101786961',
-      'https://www.instagram.com/soocool.indonesia',
-      'https://www.youtube.com/@SOOCOOL.INDONESIA',
+      "https://shopee.co.id/soocool.mall",
+      "https://www.tiktok.com/@soocool.indonesia",
+      "https://www.instagram.com/soocool.indonesia",
+      "https://www.youtube.com/@SOOCOOL.INDONESIA",
+      "https://www.facebook.com/profile.php?id=61581101786961",
     ],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Gading Kirana Utara Blok A13 No. 33, RT.18/RW.8, Klp. Gading Bar.',
-      addressLocality: 'Kec. Klp. Gading, Jkt Utara',
-      addressRegion: 'Jakarta',
-      postalCode: '14240',
-      addressCountry: 'ID',
-    },
-  }
-}
-
-function getLocalBusinessSchema(siteUrl: string, description: string) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${siteUrl}#business`,
-    name: 'Soocool',
-    url: siteUrl,
-    image: `${siteUrl}/logo.png`,
-    description,
-    telephone: '+62-852-1003-2851',
-    priceRange: '$$',
-    areaServed: 'Indonesia',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Gading Kirana Utara Blok A13 No. 33, RT.18/RW.8, Klp. Gading Bar.',
-      addressLocality: 'Kec. Klp. Gading, Jkt Utara',
-      addressRegion: 'Jakarta',
-      postalCode: '14240',
-      addressCountry: 'ID',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: -6.147168,
-      longitude: 106.9002237,
-    },
-  }
-}
-
-function getBreadcrumbSchema(siteUrl: string, page: SitePageContext, title: string) {
-  const homeItem = {
-    '@type': 'ListItem',
-    position: 1,
-    name: 'Soocool',
-    item: buildAbsoluteUrl(siteUrl, getHomePath(page.locale)),
-  }
-
-  if (page.kind === 'home') {
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [homeItem],
-    }
-  }
-
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      homeItem,
+  };
+  const product = products.find((item) => item.id === page.id);
+  if (page.page !== "product" || !product)
+    return [
+      organization,
       {
-        '@type': 'ListItem',
-        position: 2,
-        name: dictionaries[page.locale].products.title,
-        item: buildAbsoluteUrl(siteUrl, getHomePath(page.locale)),
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: seo.title,
+        url: seo.url,
+        inLanguage: page.locale,
       },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: title,
-        item: buildAbsoluteUrl(siteUrl, getPagePath(page)),
-      },
-    ],
-  }
-}
-
-function getHomeSchemas(siteUrl: string, locale: Locale, description: string) {
-  const faqItems = getFaqItems(locale)
-
+    ];
   return [
+    organization,
     {
-      '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: 'Soocool',
-      url: buildAbsoluteUrl(siteUrl, getHomePath(locale)),
-      inLanguage: locale,
-      description,
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: faqItems.map(item => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer,
-        },
-      })),
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      name: 'Soocool Ice Machines',
-      itemListElement: products.map((product, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        url: buildAbsoluteUrl(siteUrl, getProductPath(locale, product)),
-        name: product.code,
-      })),
-    },
-  ]
-}
-
-function getProductSchemas(siteUrl: string, locale: Locale, product: Product, description: string) {
-  const { card } = getCategoryCopy(locale, product.type)
-  return [
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
-      name: `${product.code} ${card.name}`,
-      brand: {
-        '@type': 'Brand',
-        name: 'Soocool',
-      },
-      sku: product.code,
-      image: `${siteUrl}${product.image}`,
-      description,
-      category: card.name,
-      offers: {
-        '@type': 'Offer',
-        url: buildAbsoluteUrl(siteUrl, getProductPath(locale, product)),
-        priceCurrency: 'IDR',
-        availability: 'https://schema.org/InStock',
-        seller: {
-          '@type': 'Organization',
-          name: 'Soocool',
-        },
-      },
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: `SOOCOOL ${product.code}`,
+      model: product.code,
+      image: seo.image,
+      description: seo.description,
+      url: seo.url,
+      brand: { "@type": "Brand", name: "SOOCOOL" },
       additionalProperty: [
         {
-          '@type': 'PropertyValue',
-          name: 'Power',
-          value: product.power,
+          "@type": "PropertyValue",
+          name: "Daily production",
+          value: `${product.production} kg / 24h`,
         },
-        ...(product.capacity
-          ? [
-              {
-                '@type': 'PropertyValue',
-                name: 'Ice Production Capacity',
-                value: product.capacity,
-              },
-            ]
-          : []),
-        ...(product.storage
-          ? [
-              {
-                '@type': 'PropertyValue',
-                name: 'Ice Storage Capacity',
-                value: product.storage,
-              },
-            ]
-          : []),
+        {
+          "@type": "PropertyValue",
+          name: "Ice storage",
+          value: `${product.storage} kg`,
+        },
       ],
     },
-  ]
-}
-
-export function getPageSeo(page: SitePageContext, siteUrl: string) {
-  if (page.kind === 'home') {
-    const seo = getHomeSeo(page.locale)
-    return {
-      ...seo,
-      url: buildAbsoluteUrl(siteUrl, getHomePath(page.locale)),
-      image: `${siteUrl}/logo.png`,
-      type: 'website',
-    }
-  }
-
-  const product = getProductBySlug(page.productSlug)
-  if (!product) {
-    const fallback = getHomeSeo(page.locale)
-    return {
-      ...fallback,
-      url: buildAbsoluteUrl(siteUrl, getHomePath(page.locale)),
-      image: `${siteUrl}/logo.png`,
-      type: 'website',
-    }
-  }
-
-  const { card } = getCategoryCopy(page.locale, product.type)
-
-  if (page.locale === 'id' && product.code === 'ES-12B') {
-    return {
-      title: 'ES-12B Ice Maker Kapasitas 12kg | Mesin Es Daya Rendah Portable | Soocool',
-      description: getProductDescription(page.locale, product),
-      keywords: getProductKeywords(page.locale, product),
-      url: buildAbsoluteUrl(siteUrl, getProductPath(page.locale, product)),
-      image: `${siteUrl}${product.image}`,
-      type: 'product',
-    }
-  }
-
-  return {
-    title: `${product.code} ${card.name} | Soocool`,
-    description: getProductDescription(page.locale, product),
-    keywords: getProductKeywords(page.locale, product),
-    url: buildAbsoluteUrl(siteUrl, getProductPath(page.locale, product)),
-    image: `${siteUrl}${product.image}`,
-    type: 'product',
-  }
-}
-
-export function getAlternateLinks(page: SitePageContext, siteUrl: string) {
-  return locales.map(locale => {
-    const path =
-      page.kind === 'home'
-        ? getHomePath(locale)
-        : getProductPath(locale, page.productSlug)
-    return {
-      hreflang: locale,
-      href: buildAbsoluteUrl(siteUrl, path),
-    }
-  })
-}
-
-export function getStructuredData(page: SitePageContext, siteUrl: string) {
-  const seo = getPageSeo(page, siteUrl)
-  const shared = [
-    getOrganizationSchema(siteUrl, seo.description),
-    getLocalBusinessSchema(siteUrl, seo.description),
-    getBreadcrumbSchema(siteUrl, page, seo.title),
-  ]
-
-  if (page.kind === 'home') {
-    return [...shared, ...getHomeSchemas(siteUrl, page.locale, seo.description)]
-  }
-
-  const product = getProductBySlug(page.productSlug)
-  if (!product) return shared
-
-  return [...shared, ...getProductSchemas(siteUrl, page.locale, product, seo.description)]
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: names.products[page.locale],
+          item:
+            siteUrl +
+            getLocalizedPagePath(
+              { ...page, page: "products", id: "" },
+              page.locale,
+            ),
+        },
+        { "@type": "ListItem", position: 2, name: product.code, item: seo.url },
+      ],
+    },
+  ];
 }
