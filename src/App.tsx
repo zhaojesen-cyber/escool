@@ -1,22 +1,10 @@
-import { useEffect } from 'react'
-import HomePage from './pages/HomePage'
-import ProductPage from './pages/ProductPage'
-import type { SitePageContext } from './site/content'
-
-interface AppProps {
-  page: SitePageContext
-}
-
-function App({ page }: AppProps) {
-  useEffect(() => {
-    document.documentElement.lang = page.locale
-  }, [page.locale])
-
+import { useEffect, useMemo } from "react";
+import { renderMarkup, mountSite } from "./site/approved-site.js";
+import type { SitePageContext } from "./site/routes";
+export default function App({ page }: { page: SitePageContext }) {
+  const html = useMemo(() => renderMarkup(page), [page]);
+  useEffect(() => mountSite(page), [page]);
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden w-full">
-      {page.kind === 'home' ? <HomePage page={page} /> : <ProductPage page={page} />}
-    </div>
-  )
+    <div className="soocool-site" dangerouslySetInnerHTML={{ __html: html }} />
+  );
 }
-
-export default App

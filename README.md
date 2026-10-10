@@ -1,138 +1,66 @@
-# Soocool Website
+# SOOCOOL official website
 
-A modern, responsive website for Soocool ice machine brand built with React, Vite, and TypeScript.
+Production implementation of the approved SOOCOOL website: light blue appliance-brand design, first-screen interactive ice cubes, home/commercial/modular carousel, validated model catalogue, model comparison, ice-demand calculator, complete guides, quotation enquiries, Shopee/TikTok Shop and four social channels.
 
-## Features
+## Run and verify
 
-- 🌍 Multi-language support with dedicated crawlable URLs for English, Indonesian, and Chinese
-- 📱 Fully responsive design for mobile and desktop
-- 🎨 Modern, beautiful UI with Tailwind CSS
-- ⚡ Fast performance with Vite
-- 🔍 Static SEO output with localized metadata, structured data, sitemap, and robots.txt
-- ☁️ Ready for Cloudflare Pages deployment
+Use Node 22 (minimum 20.19) and npm:
 
-## Tech Stack
-
-- React 18
-- Vite
-- TypeScript
-- Tailwind CSS
-- i18next for internationalization
-- Lucide React for icons
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm
-
-### Installation
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
+```sh
+npm ci
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
+npm run check
 npm run preview
 ```
 
-## Project Structure
+`npm run check` runs lint, TypeScript, routing/content/SEO tests, the production build, and checks every generated page and internal asset/link. Builds create 81 crawlable locale/page/product URLs, a real 404 document, sitemap, robots, redirects and security headers. Indonesian uses `/`, English `/en/`, Chinese `/zh/`. Existing `/id/` and `/id/products/es-12b/` links redirect to their canonical destinations. Previous `#/zh/home` prototype links migrate on the client.
 
-```
-src/
-├── components/       # React components
-│   ├── Header.tsx
-│   ├── Hero.tsx
-│   ├── Products.tsx
-│   ├── Services.tsx
-│   ├── Testimonials.tsx
-│   ├── FAQ.tsx
-│   ├── Consultation.tsx
-│   ├── Footer.tsx
-├── pages/            # Home and product landing pages
-├── site/             # Locale routing and SEO helpers
-├── i18n/            # Internationalization
-│   ├── config.ts
-│   └── locales/
-│       ├── en.json
-│       ├── zh.json
-│       └── id.json
-├── render.tsx       # Server rendering entry for static generation
-├── App.tsx          # Main app component
-├── main.tsx         # Entry point
-└── index.css        # Global styles
-```
+## Structure and maintenance
 
-## Configuration
+- `src/catalogue/products.json`: validated public models and specifications; prices are not published. Some original source photos are shared by the same series and the pages label them accordingly.
+- `src/site/pages/`: approved page templates by page. Templates consume explicit locale-aware helpers; static generation and client rendering share them.
+- `src/site/approved-site.js`: shared layout, product UI, localized content helpers, modal forms and scoped browser event lifecycle.
+- `src/site/ice-scene.js`: proportional particle ice cubes, pointer follow, reduced-motion support and observer cleanup.
+- `src/site/guides.js`: complete Chinese, English and Indonesian practical guides.
+- `src/site/routes.ts`, `seo.ts`: typed routes and metadata/structured data.
+- `src/App.tsx`: React shell and effect cleanup for the approved HTML renderer. React owns the shell; the interactive module owns its contained DOM. This is a static build, not a concurrent server-rendering service.
+- `scripts/generate-static.tsx`, `verify-dist.ts`: production output and complete link validation.
+- `public/assets`, `public/documents`: product/factory images and three downloadable catalogues.
 
-### WhatsApp Number
+Shop/social contacts and the approved buyer-rating snapshots are maintained in `approved-site.js` (`STORE_LINKS`, `SOCIAL_LINKS`, `CONTACT`, `BUYER_RATINGS`). Buyer scores are manually verified platform snapshots, not a live API; do not invent quotes or increase ratings without new evidence. No private price sheet or channel-pricing data is stored in this repository.
 
-Update the WhatsApp number in `src/components/Consultation.tsx`:
+After updating products, also update the three catalogues in `public/documents/` using the same validated public data. Run `npm run check` and inspect desktop/mobile pages before deploying. Public photos use same-series labels where a unique model photo was not supplied.
 
-```typescript
-const whatsappNumber = '1234567890' // Replace with your actual number
-```
+## Enquiries and privacy
 
-### Social Media Links
+Forms validate name, location, email/international phone, requirements and consent. They open an editable WhatsApp/email message for the visitor to confirm and send. No enquiries or orders are saved by this site, and there is no simulated submission success. Locale preference is local browser storage. There is no database or secret required to render the website. Platform access credentials belong in the hosting platform, never this repository.
 
-Update social media links in `src/components/Footer.tsx` and `src/components/Hero.tsx`:
+## Cloudflare deployment
 
-- TikTok Shop link
-- Shopee link
-- Facebook, Instagram, Twitter links
+Preserve the actual existing Cloudflare project and its `escool.id` custom domain. Git integration settings:
 
-### Company Address
+- Repository: `zhaojesen-cyber/escool`
+- Production branch: `master`
+- Install: `npm ci`
+- Build: `npm run check`
+- Output: `dist`
+- Build environment: `NODE_VERSION=22`, `SITE_URL=https://escool.id`
 
-Update the company address in `src/components/Footer.tsx`.
+For Workers Builds, use the existing `escool` Worker and deployment command `npx wrangler deploy`; `wrangler.jsonc` serves the generated static assets. For Pages, use the `dist` output and do not create a second project or change the live domain until its preview passes. Hosting-side Git connection configuration cannot be committed as a substitute for actually configuring the platform.
 
-## Deployment to Cloudflare Pages
+GitHub Actions `.github/workflows/ci.yml` verifies changes on master and pull requests and retains a build artifact. A failed check stops the Cloudflare build when its build command is `npm run check`.
 
-1. Push your code to a Git repository (GitHub, GitLab, etc.)
+The `SITE_URL` build environment controls canonical URLs and sitemap. `_headers` sets a restrictive content policy and frame protection; `_redirects` preserves old URLs. A root `404.html` prevents unknown URLs from returning homepage HTML.
 
-2. In Cloudflare Dashboard:
-   - Go to Pages
-   - Create a new project
-   - Connect your repository
-   - Build settings:
-     - Build command: `npm run build`
-     - Build output directory: `dist`
-     - Root directory: `/`
-   - Environment variables:
-     - `SITE_URL=https://escool.id`
+Docker alternative:
 
-3. In your custom domain settings, connect `escool.id` to the Pages project so the generated canonical URLs, `robots.txt`, and `sitemap.xml` match the live domain.
-
-4. The generated `_redirects`, `robots.txt`, and `sitemap.xml` files inside `dist/` will be picked up automatically by Cloudflare Pages.
-
-Alternatively, you can use Wrangler CLI:
-
-```bash
-# Install Wrangler
-npm install -D wrangler
-
-# Deploy
-npx wrangler pages deploy dist
+```sh
+docker build -t soocool-web .
+docker run --rm -p 8080:80 soocool-web
 ```
 
-## SEO
+HTTPS is terminated by Cloudflare or an upstream proxy. Container logs go to stdout/stderr. Docker configuration is provided; verify the container in an environment with Docker installed.
 
-The website includes:
-- Static HTML for every locale homepage and product landing page
-- Canonical URLs for `https://escool.id`
-- Localized alternate language links (`hreflang`)
-- Open Graph tags
-- Twitter Card tags
-- JSON-LD structured data for Organization, LocalBusiness, FAQ, Product, and Breadcrumbs
-- XML sitemap and robots.txt generation
-- Semantic HTML structure with product internal linking
+## Rollback
 
-## License
-
-© 2026 Soocool. All rights reserved.
+Baseline before the approved redesign: `b15052c` on master. Restore the previous deployment using Cloudflare's deployment rollback control, then revert the redesign Git commit if required. Do not force-push shared history. Keep the previous deployment until the new website passes live checks.

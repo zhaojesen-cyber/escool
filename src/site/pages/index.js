@@ -1,0 +1,9 @@
+export { homePage } from "./homePage.js";
+export { productsPage } from "./productsPage.js";
+export { productPage } from "./productPage.js";
+export { solutionsPage } from "./solutionsPage.js";
+export { partnersPage } from "./partnersPage.js";
+export { aboutPage } from "./aboutPage.js";
+export { supportPage } from "./supportPage.js";
+export { resourcesPage } from "./resourcesPage.js";
+export { contactPage } from "./contactPage.js";
